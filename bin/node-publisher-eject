@@ -1,0 +1,29 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+const path = require('path');
+const program = require('commander');
+const { safeDump } = require('js-yaml');
+const { validateEnvironment } = require('../src/utils');
+const { buildReleaseConfig } = require('../src/utils/config');
+
+program
+  .description('Places the default configuration into the root directory of your package as `.release.yml`. After this command is run, the release process is governed by the configuration read from that file. If a release file already exists, it will be overwritten by the default configuration.')
+  .parse(process.argv);
+
+try {
+  validateEnvironment();
+
+  const config = safeDump(buildReleaseConfig(), {
+    skipInvalid: true
+  });
+  
+  fs.writeFileSync(
+    path.resolve(process.env.PWD, '.release.yml'),
+    config,
+    'utf-8'
+  );
+} catch (e) {
+  console.error(`ERROR: ${e.message}`);
+  process.exit(1);
+}

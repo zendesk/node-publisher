@@ -1,0 +1,13 @@
+{
+  "extends": [
+    "pretty-standard",
+    "plugin:jest/recommended"
+  ],
+  "plugins": [
+    "jest"
+  ],
+  "env": {
+    "jest/globals": true
+  },
+  "parser": "babel-eslint"
+}

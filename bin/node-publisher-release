@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+
+const program = require('commander');
+const release = require('../');
+const { validateEnvironment } = require('../src/utils');
+
+program
+  .description('Releases your package under the specified version.')
+  .option('[version]', 'specify the release version: (major|minor|patch)')
+  .parse(process.argv);
+
+try {
+  validateEnvironment();
+  
+  release(program.args[0]);
+} catch (e) {
+  console.error(`ERROR: ${e.message}`);
+  process.exit(1);
+}

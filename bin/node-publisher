@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+
+const program = require('commander');
+const pkg = require('../package.json');
+
+program
+  .version(pkg.version, '-v, --version')
+  .description('A configurable release automation tool for node packages inspired by Travis CI.')
+  .command('eject', 'makes the release process fully configurable by placing the default configuration as a `.release.yml` file in the root directory of the package')
+  .command('release [version]', 'releases the specified version of the package', {isDefault: true})
+  .parse(process.argv);
