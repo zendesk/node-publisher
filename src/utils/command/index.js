@@ -1,8 +1,8 @@
 const { execSync } = require('child_process');
 
-const exec = command => {
+const exec = (command, opts = { stdio: [0, 1, 2] }) => {
   try {
-    execSync(command, { stdio: [0, 1, 2] });
+    execSync(command, opts);
   } catch (e) {
     throw new Error(`Execution of command \`${command}\` failed.`);
   }

@@ -33,9 +33,19 @@ const execCommands = configCommands => {
   }
 };
 
+const currentCommitId = () =>
+  command
+    .exec('git rev-parse HEAD', {})
+    .toString()
+    .trim();
+
+const rollbackCommit = commitId => command.exec(`git reset --hard ${commitId}`);
+
 module.exports = {
   validateEnvironment,
   loadReleaseConfig,
   validVersion,
-  execCommands
+  execCommands,
+  currentCommitId,
+  rollbackCommit
 };
