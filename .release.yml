@@ -10,11 +10,6 @@ prepare:
 test:
   - yarn travis
 
-build:
-  - yarn build
-  - git add dist/bundle.js
-  - git commit -m "Update build file"
-
 after_publish:
   - 'git push --follow-tags origin master:master'
 
