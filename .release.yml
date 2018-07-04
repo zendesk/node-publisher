@@ -5,7 +5,7 @@ prepare:
   - git diff-index --quiet HEAD --
   - git checkout master
   - git pull --rebase
-  - check-node-version --node $(cat .nvmrc) --yarn 1.7
+  - '[[ -f .nvmrc ]] check-node-version --node $(cat .nvmrc) --yarn 1.7'
   - yarn install
 
 test:

@@ -12,7 +12,7 @@ const buildReleaseConfig = () => {
       'git diff-index --quiet HEAD --',
       'git checkout master',
       'git pull --rebase',
-      'check-node-version --node $(cat .nvmrc)',
+      '[[ -f .nvmrc ]] && check-node-version --node $(cat .nvmrc)',
       `${client} install`
     ],
     test: [`${client === 'yarn' ? 'yarn' : 'npm run'} travis`],

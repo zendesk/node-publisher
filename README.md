@@ -31,6 +31,10 @@ node-publisher eject
 
 After ejecting, a `.release.yml` file will appear in the root directory of your package. You can override the default behaviour by modifying this file.
 
+### Prerequisites
+
+The default release process assumes a `.nvmrc` file present in the root of your package. In case it is missing, the release fails in its preparation phase.
+
 ## Lifecycle
 
 1. `prepare`: The process that prepares the workspace for releasing a new version of your package. It might checkout to master, check whether the working tree is clean, check the current node version, etc. Between this step and `test`, a rollback point is created for your git repo.
@@ -65,7 +69,7 @@ prepare:
   - git diff-index --quiet HEAD --
   - git checkout master
   - git pull --rebase
-  - check-node-version --node $(cat .nvmrc)
+  - '[[ -f .nvmrc ]] && check-node-version --node $(cat .nvmrc)'
   - yarn install
 
 test:
