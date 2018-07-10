@@ -9,6 +9,9 @@
   },
   "version": "0.1.1",
   "main": "src/index.js",
+  "bin": {
+    "node-publisher": "./bin/node-publisher"
+  },
   "scripts": {
     "coverage": "jest --coverage",
     "lint": "eslint ./**/*.js",
