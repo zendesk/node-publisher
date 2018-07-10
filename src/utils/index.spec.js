@@ -1,8 +1,10 @@
+const childProcess = require('child_process');
+const { execSync } = childProcess;
 const utils = require('./index');
 const config = require('./config');
 
 jest.mock('fs');
-jest.mock('./command');
+jest.mock('child_process');
 jest.mock('./config');
 
 describe('validateEnvironment', () => {
@@ -75,17 +77,17 @@ describe('validVersion', () => {
 });
 
 describe('execCommands', () => {
-  const command = require('./command');
+  childProcess.__permitCommands(['mycommand', 'mySecondCommand']);
 
   afterEach(() => {
-    command.exec.mockClear();
+    execSync.mockClear();
   });
 
   describe('when config commands are undefined', () => {
     it('execCommand is not called', () => {
       utils.execCommands();
 
-      expect(command.exec).not.toHaveBeenCalled();
+      expect(execSync).not.toHaveBeenCalled();
     });
   });
 
@@ -93,8 +95,8 @@ describe('execCommands', () => {
     it('execCommand is called 1 time', () => {
       utils.execCommands('mycommand --some-arg');
 
-      expect(command.exec).toHaveBeenCalledTimes(1);
-      expect(command.exec.mock.calls[0][0]).toBe('mycommand --some-arg');
+      expect(execSync).toHaveBeenCalledTimes(1);
+      expect(execSync.mock.calls[0][0]).toBe('mycommand --some-arg');
     });
   });
 
@@ -105,9 +107,43 @@ describe('execCommands', () => {
         'mySecondCommand --some-arg'
       ]);
 
-      expect(command.exec).toHaveBeenCalledTimes(2);
-      expect(command.exec.mock.calls[0][0]).toBe('mycommand --some-arg');
-      expect(command.exec.mock.calls[1][0]).toBe('mySecondCommand --some-arg');
+      expect(execSync).toHaveBeenCalledTimes(2);
+      expect(execSync.mock.calls[0][0]).toBe('mycommand --some-arg');
+      expect(execSync.mock.calls[1][0]).toBe('mySecondCommand --some-arg');
     });
+  });
+});
+
+describe('currentCommitId', () => {
+  it("returns the HEAD commit's ID", () => {
+    childProcess.__permitCommands(['git']);
+    childProcess.__setReturnValues({
+      'git rev-parse HEAD': Buffer.from(
+        'f030084d079ba5e07de6546879a84e23de536db1\n',
+        'utf8'
+      )
+    });
+
+    const commitId = utils.currentCommitId();
+
+    expect(execSync).toHaveBeenCalled();
+    expect(commitId).toBe('f030084d079ba5e07de6546879a84e23de536db1');
+
+    execSync.mockClear();
+  });
+});
+
+describe('rollbackCommit', () => {
+  it('rolls back to the specified commit', () => {
+    childProcess.__permitCommands(['git']);
+
+    utils.rollbackCommit('f030084d079ba5e07de6546879a84e23de536db1');
+
+    expect(execSync).toHaveBeenCalled();
+    expect(execSync.mock.calls[0][0]).toBe(
+      'git reset --hard f030084d079ba5e07de6546879a84e23de536db1'
+    );
+
+    execSync.mockClear();
   });
 });
