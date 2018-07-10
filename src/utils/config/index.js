@@ -23,7 +23,7 @@ const buildReleaseConfig = () => {
     ],
     after_publish: ['git push --follow-tags origin master:master'],
     changelog: [
-      'offline-github-changelog > CHANGELOG.md',
+      'npx offline-github-changelog > CHANGELOG.md',
       'git add CHANGELOG.md',
       'git commit --allow-empty -m "Update changelog"',
       'git push origin master:master'
