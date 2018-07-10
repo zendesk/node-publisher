@@ -1,3 +1,7 @@
+### v0.1.2 (2018-07-10)
+
+- [#4](https://github.com/zendesk/node-publisher/pull/4) Extend `package.json` with a binary entry ([Attila Večerek](mailto:avecerek@zendesk.com))
+
 ### v0.1.1 (2018-07-10)
 
 - [#3](https://github.com/zendesk/node-publisher/pull/3) Fix `offline-github-changelog` command not found error ([Attila Večerek](mailto:avecerek@zendesk.com))
