@@ -42,7 +42,13 @@ Create a `scripts` entry in your `package.json`, such as:
 
 and run:
 ```
-(npm run|yarn) release -- (major | minor | patch)
+npm run release -- (major | minor | patch)
+```
+
+or 
+
+```
+yarn release (major | minor | patch)
 ```
 
 ## Customize the release process
