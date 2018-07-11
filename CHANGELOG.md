@@ -1,5 +1,7 @@
-yarn run v1.7.0
-$ /Users/avecerek/Code/zendesk/node-publisher/node_modules/.bin/offline-github-changelog
+### v0.1.4 (2018-07-11)
+
+- [#6](https://github.com/zendesk/node-publisher/pull/6) Call local package bins directly instead of relying on `yarn` or `npx` ([Attila Večerek](mailto:avecerek@zendesk.com))
+
 ### v0.1.3 (2018-07-11)
 
 - [#5](https://github.com/zendesk/node-publisher/pull/5) Run binaries of local packages either using `yarn` or `npx` ([Attila Večerek](mailto:avecerek@zendesk.com))
@@ -17,4 +19,3 @@ $ /Users/avecerek/Code/zendesk/node-publisher/node_modules/.bin/offline-github-c
 - [#2](https://github.com/zendesk/node-publisher/pull/2) Fix rollback and own release ([Attila Večerek](mailto:avecerek@zendesk.com))
 - [#1](https://github.com/zendesk/node-publisher/pull/1) Initial PR ([Attila Večerek](mailto:avecerek@zendesk.com))
 
-Done in 0.24s.
