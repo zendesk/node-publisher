@@ -5,6 +5,8 @@ const readReleaseConfig = str => yaml.safeLoad(str);
 
 const buildReleaseConfig = () => {
   const client = npmClient();
+  const scriptRunner = client === 'yarn' ? 'yarn' : 'npm run';
+  const packageRunner = client === 'yarn' ? 'yarn' : 'npx';
 
   return {
     rollback: true,
@@ -12,18 +14,18 @@ const buildReleaseConfig = () => {
       'git diff-index --quiet HEAD --',
       'git checkout master',
       'git pull --rebase',
-      '[[ -f .nvmrc ]] && check-node-version --node $(cat .nvmrc)',
+      `[[ -f .nvmrc ]] && ${packageRunner} check-node-version --node $(cat .nvmrc)`,
       `${client} install`
     ],
-    test: [`${client === 'yarn' ? 'yarn' : 'npm run'} travis`],
+    test: [`${scriptRunner} travis`],
     build: [
-      `${client === 'yarn' ? 'yarn' : 'npm run'} build`,
+      `${scriptRunner} build`,
       'git add dist/bundle.js',
       'git commit -m "Update build file"'
     ],
     after_publish: ['git push --follow-tags origin master:master'],
     changelog: [
-      'npx offline-github-changelog > CHANGELOG.md',
+      `${packageRunner} offline-github-changelog > CHANGELOG.md`,
       'git add CHANGELOG.md',
       'git commit --allow-empty -m "Update changelog"',
       'git push origin master:master'

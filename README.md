@@ -17,13 +17,35 @@ yarn add --dev @zendesk/node-publisher
 
 ## Usage
 
-To release a new version of your package, run:
+### Global installation
 
 ```
 node-publisher release (major | minor | patch)
 ```
 
-To customize your release process, run:
+### Local installation
+#### With NPM
+
+```
+npx node-publisher release (major | minor | patch)
+```
+
+#### With Yarn
+```
+yarn node-publisher release (major | minor | patch)
+```
+
+#### Through package.json scripts
+Create a `scripts` entry in your `package.json`, such as:
+
+`"release": "node-publisher release"`
+
+and run:
+```
+(npm run|yarn) release -- (major | minor | patch)
+```
+
+## Customize the release process
 
 ```
 node-publisher eject
@@ -31,7 +53,7 @@ node-publisher eject
 
 After ejecting, a `.release.yml` file will appear in the root directory of your package. You can override the default behaviour by modifying this file.
 
-### Prerequisites
+## Prerequisites
 
 The default release process assumes a `.nvmrc` file present in the root of your package. In case it is missing, the release fails in its preparation phase.
 
@@ -69,7 +91,7 @@ prepare:
   - git diff-index --quiet HEAD --
   - git checkout master
   - git pull --rebase
-  - '[[ -f .nvmrc ]] && check-node-version --node $(cat .nvmrc)'
+  - '[[ -f .nvmrc ]] && yarn check-node-version --node $(cat .nvmrc)'
   - yarn install
 
 test:
@@ -84,7 +106,7 @@ after_publish:
   - git push --follow-tags origin master:master
 
 changelog:
-  - npx offline-github-changelog > CHANGELOG.md
+  - yarn offline-github-changelog > CHANGELOG.md
   - git add CHANGELOG.md
   - git commit --allow-empty -m "Update changelog"
   - git push origin master:master
