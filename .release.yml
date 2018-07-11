@@ -5,7 +5,7 @@ prepare:
   - git diff-index --quiet HEAD --
   - git checkout master
   - git pull --rebase
-  - '[[ -f .nvmrc ]] && yarn check-node-version --node $(cat .nvmrc) --yarn 1.7'
+  - '[[ -f .nvmrc ]] && ./node_modules/.bin/check-node-version --node $(cat .nvmrc) --yarn 1.7'
   - yarn install
 
 test:
@@ -15,7 +15,7 @@ after_publish:
   - 'git push --follow-tags origin master:master'
 
 changelog:
-  - yarn offline-github-changelog > CHANGELOG.md
+  - ./node_modules/.bin/offline-github-changelog > CHANGELOG.md
   - git add CHANGELOG.md
   - git commit --allow-empty -m "Update changelog"
   - 'git push origin master:master'
