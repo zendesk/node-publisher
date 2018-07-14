@@ -61,7 +61,11 @@ After ejecting, a `.release.yml` file will appear in the root directory of your 
 
 ## Prerequisites
 
-The default release process assumes a `.nvmrc` file present in the root of your package. In case it is missing, the release fails in its preparation phase.
+The default release process assumes the following:
+
+- The master branch is called `master`.
+- A `.nvmrc` file is present in the root of your package. In case it is missing, the release fails in its preparation phase.
+- A build process is assumed with build files being generated in the `dist/` directory.
 
 ## Lifecycle
 
@@ -105,7 +109,7 @@ test:
 
 build:
   - yarn build
-  - git add dist/bundle.js
+  - git add dist/
   - git commit -m "Update build file"
 
 after_publish:
