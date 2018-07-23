@@ -137,7 +137,7 @@ yarn
 
 ### Release a new version
 ```
-./bin/node-publisher release (major|minor|patch)
+yarn release (major|minor|patch)
 ```
 
 ## Owners

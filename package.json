@@ -16,6 +16,7 @@
     "coverage": "jest --coverage",
     "lint": "eslint ./**/*.js",
     "lint-staged": "lint-staged",
+    "release": "./bin/node-publisher release",
     "test": "jest",
     "travis": "yarn lint && yarn test"
   },
