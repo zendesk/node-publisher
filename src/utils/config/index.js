@@ -20,7 +20,7 @@ const buildReleaseConfig = () => {
     test: [`${scriptRunner} travis`],
     build: [
       `${scriptRunner} build`,
-      'git add dist/bundle.js',
+      'git add dist/',
       'git commit -m "Update build file"'
     ],
     after_publish: ['git push --follow-tags origin master:master'],
