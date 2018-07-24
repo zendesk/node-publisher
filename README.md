@@ -101,7 +101,7 @@ test:
 build:
   - yarn build
   - git add dist/
-  - git commit -m "Update build file"
+  - git commit --allow-empty -m "Update build file"
 
 after_publish:
   - git push --follow-tags origin master:master
