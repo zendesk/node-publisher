@@ -3,7 +3,7 @@
 This is a configurable release automation tool for node packages inspired by Travis CI. It has a default configuration, which can be overriden in case of need. As a convention, this release tool defines a set of hooks that represent the release lifecycle. The default configuration can be overriden by redefining what commands should run under which hook in a `.release.yml` file. The hooks are listed under the [Lifecycle](#lifecycle) section.
 
 ## Getting started
-Install the package:
+### 1. Install the package:
 
 ```
 npm install @zendesk/node-publisher --save-dev
@@ -15,32 +15,23 @@ or
 yarn add --dev @zendesk/node-publisher
 ```
 
+### 2. Add following scripts to `package.json`
+```js
+// package.json
+// make sure the `travis` command exits with a status that can be read from the terminal with $?
+
+{
+  ...,
+  "sctipts": {
+    "travis": "your linting/testing/etc. command here",
+    "release": "node-publisher release",
+  },
+  ...
+}
+```
+
 ## Usage
 
-### Global installation
-
-```
-node-publisher release (major | minor | patch)
-```
-
-### Local installation
-#### With NPM
-
-```
-npx node-publisher release (major | minor | patch)
-```
-
-#### With Yarn
-```
-yarn node-publisher release (major | minor | patch)
-```
-
-#### Through package.json scripts
-Create a `scripts` entry in your `package.json`, such as:
-
-`"release": "node-publisher release"`
-
-and run:
 ```
 npm run release -- (major | minor | patch)
 ```
