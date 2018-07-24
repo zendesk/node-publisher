@@ -1,3 +1,8 @@
+### v0.2.1 (2018-07-24)
+
+- [#11](https://github.com/zendesk/node-publisher/pull/11) Allow unmodified bundles to be committed ([Attila Večerek](mailto:avecerek@zendesk.com))
+- [#10](https://github.com/zendesk/node-publisher/pull/10) Clarifies getting started and simplifies usage in README ([Attila Večerek](mailto:avecerek@zendesk.com))
+
 ### v0.2.0 (2018-07-23)
 
 - [#9](https://github.com/zendesk/node-publisher/pull/9) Add alias to own release command in package.json ([Attila Večerek](mailto:avecerek@zendesk.com))
