@@ -4,13 +4,18 @@ const command = require('./command');
 const { readReleaseConfig, buildReleaseConfig } = require('./config');
 
 const VERSIONS = ['major', 'minor', 'patch'];
+const packageJson = path.resolve(process.env.PWD, 'package.json');
 
 const validateEnvironment = () => {
-  const packageJson = path.resolve(process.env.PWD, 'package.json');
-
   if (!fs.existsSync(packageJson)) {
     throw new Error('Run this script from the root of your package.');
   }
+};
+
+const isBuildDefined = () => {
+  const pkg = JSON.parse(fs.readFileSync(packageJson, 'utf8'));
+
+  return pkg.scripts && pkg.scripts.build;
 };
 
 const loadReleaseConfig = () => {
@@ -43,6 +48,7 @@ const rollbackCommit = commitId => command.exec(`git reset --hard ${commitId}`);
 
 module.exports = {
   validateEnvironment,
+  isBuildDefined,
   loadReleaseConfig,
   validVersion,
   execCommands,

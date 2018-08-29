@@ -56,6 +56,7 @@ The default release process assumes the following:
 
 - The master branch is called `master`.
 - A `.nvmrc` file is present in the root of your package. In case it is missing, the release fails in its preparation phase.
+- The tool expects the build generation script to be called `build`. Otherwise, the build step is skipped.
 
 ## Lifecycle
 
@@ -82,7 +83,7 @@ The lifecycle hooks can be redefined in the form of a configurable YAML file. Ad
 * `rollback [Boolean]` - rolls back to the latest commit fetched after the `prepare` step. The rollback itself happens in the `after_failure` step and only if this flag is set to `true`.
 
 ### Default configuration
-The exact configuration depends on the npm client being used. In case, it is yarn, the default configuration will look like this:
+The exact configuration depends on the npm client being used and the contents of your `package.json` file. In case you use yarn, the default configuration will look like this:
 
 ```yaml
 rollback: true
@@ -97,7 +98,7 @@ prepare:
 test:
   - yarn travis
 
-build:
+build: # only if "build" is defined as a script in your `package.json`
   - yarn build
   - git add .
   - git commit --allow-empty -m "Update build file"

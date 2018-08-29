@@ -41,7 +41,10 @@ describe('loadReleaseConfig', () => {
 
     it('loads the custom configuration', () => {
       require('fs').__setMockFiles(MOCKED_FILES);
-      require('fs').__setReadFileSyncReturnValue('file contents');
+      require('fs').__setReadFileSyncReturnValue(
+        '.release.yml',
+        'file contents'
+      );
       config.readReleaseConfig.mockReturnValue('configuration');
 
       const strConfig = utils.loadReleaseConfig();
