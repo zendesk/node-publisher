@@ -11,6 +11,14 @@ const validatePkgRoot = () => {
   }
 };
 
+const validateTestRunner = testRunner => {
+  if (!testRunner) {
+    throw new Error(
+      'Your package.json must define at least one of the two required scripts: "travis", "ci"'
+    );
+  }
+};
+
 const validateVersion = (version, env) => {
   if (env.publishClient === 'lerna') return;
   if (VERSIONS.includes(version)) return;
@@ -32,6 +40,7 @@ const isBuildDefined = pkg => pkg.scripts && pkg.scripts.build;
 
 module.exports = {
   validatePkgRoot,
+  validateTestRunner,
   validateVersion,
   validateLerna,
   isBuildDefined

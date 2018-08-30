@@ -12,7 +12,7 @@ program
   .parse(process.argv);
 
 try {
-  const env = buildReleaseEnvironment();
+  const env = buildReleaseEnvironment({ quiet: true });
 
   const config = safeDump(buildReleaseConfig(env), {
     skipInvalid: true

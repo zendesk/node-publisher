@@ -2,7 +2,7 @@ const { buildReleaseConfig } = require('./');
 
 describe('buildReleaseConfig', () => {
   describe('when build script is defined in package.json', () => {
-    const baseEnv = { withBuildStep: true };
+    const baseEnv = { testRunner: 'travis', withBuildStep: true };
 
     describe('and npm is the detected npm client', () => {
       const env = Object.assign({}, baseEnv, { npmClient: 'npm' });
@@ -30,7 +30,11 @@ describe('buildReleaseConfig', () => {
   });
 
   describe('when build script is not defined in package.json', () => {
-    const env = { npmClient: 'yarn', withBuildStep: false };
+    const env = {
+      npmClient: 'yarn',
+      testRunner: 'travis',
+      withBuildStep: false
+    };
 
     it('returns a configuration without the build step', () => {
       const config = buildReleaseConfig(env);

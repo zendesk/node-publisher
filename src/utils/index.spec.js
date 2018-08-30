@@ -1,5 +1,6 @@
 const childProcess = require('child_process');
 const { execSync } = childProcess;
+const { DEFAULT_TEST_RUNNER } = require('./constants');
 const {
   buildReleaseEnvironment,
   loadReleaseConfig,
@@ -17,29 +18,88 @@ jest.mock('./config');
 jest.mock('./validations');
 jest.mock('./client');
 
-require('fs').__setReadFileSyncReturnValue('package.json', JSON.stringify({}));
+const mockTestRunner = testRunner =>
+  require('fs').__setReadFileSyncReturnValue(
+    'package.json',
+    JSON.stringify({
+      scripts: {
+        [testRunner]: 'jest'
+      }
+    })
+  );
 
 describe('buildReleaseEnvironment', () => {
+  const baseOptions = {};
   const throwError = () => {
     throw new Error();
   };
 
-  describe('when PWD is not package root', () => {
-    it('throws an error', () => {
-      validations.validatePkgRoot.mockImplementation(throwError);
+  describe('when errors are silenced', () => {
+    const options = Object.assign({}, baseOptions, { quiet: true });
 
-      expect(() => buildReleaseEnvironment()).toThrow();
+    describe('and PWD is not package root', () => {
+      it('throws an error', () => {
+        validations.validatePkgRoot.mockImplementation(throwError);
 
-      validations.validatePkgRoot.mockRestore();
+        expect(() => buildReleaseEnvironment(options)).toThrow();
+
+        validations.validatePkgRoot.mockRestore();
+      });
+    });
+
+    describe('and the detected test runner is invalid', () => {
+      beforeAll(() => {
+        mockTestRunner('test');
+        validations.validateTestRunner.mockImplementation(throwError);
+      });
+
+      afterAll(() => validations.validateTestRunner.mockRestore());
+
+      it('does not throw an error', () => {
+        expect(() => buildReleaseEnvironment(options)).not.toThrow();
+      });
+
+      it('returns the default test runner', () => {
+        const env = buildReleaseEnvironment(options);
+
+        expect(env.testRunner).toBe(DEFAULT_TEST_RUNNER);
+      });
+    });
+  });
+
+  describe('when errors are not silenced', () => {
+    const options = baseOptions;
+
+    describe('and PWD is not package root', () => {
+      it('throws an error', () => {
+        validations.validatePkgRoot.mockImplementation(throwError);
+
+        expect(() => buildReleaseEnvironment(options)).toThrow();
+
+        validations.validatePkgRoot.mockRestore();
+      });
+    });
+
+    describe('and the detected test runner is invalid', () => {
+      beforeAll(() => mockTestRunner('test'));
+
+      it('throws an error', () => {
+        validations.validateTestRunner.mockImplementation(throwError);
+
+        expect(() => buildReleaseEnvironment(options)).toThrow();
+
+        validations.validateTestRunner.mockRestore();
+      });
     });
   });
 
   describe('when lerna is the detected client', () => {
+    const options = baseOptions;
     beforeAll(() => client.publishClient.mockReturnValue('lerna'));
 
     describe('and lerna was bootstrapped', () => {
       it('does not throw an error', () => {
-        expect(() => buildReleaseEnvironment()).not.toThrow();
+        expect(() => buildReleaseEnvironment(options)).not.toThrow();
       });
     });
 
@@ -47,7 +107,7 @@ describe('buildReleaseEnvironment', () => {
       it('throws an error', () => {
         validations.validateLerna.mockImplementation(throwError);
 
-        expect(() => buildReleaseEnvironment()).toThrow();
+        expect(() => buildReleaseEnvironment(options)).toThrow();
 
         validations.validateLerna.mockRestore();
       });

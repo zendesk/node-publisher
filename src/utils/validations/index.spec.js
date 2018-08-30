@@ -1,5 +1,6 @@
 const {
   validatePkgRoot,
+  validateTestRunner,
   validateVersion,
   validateLerna,
   isBuildDefined
@@ -31,6 +32,24 @@ describe('validatePkgRoot', () => {
       require('fs').__setMockFiles(MOCKED_FILES);
 
       expect(validatePkgRoot).not.toThrow();
+    });
+  });
+});
+
+describe('validateTestRunner', () => {
+  describe('when test runner is defined', () => {
+    const testRunner = 'travis';
+
+    it('does not throw an error', () => {
+      expect(() => validateTestRunner(testRunner)).not.toThrow();
+    });
+  });
+
+  describe('when test runner is undefined', () => {
+    const testRunner = undefined;
+
+    it('throws an error', () => {
+      expect(() => validateTestRunner(testRunner)).toThrow();
     });
   });
 });

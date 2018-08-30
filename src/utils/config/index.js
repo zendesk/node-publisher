@@ -16,7 +16,7 @@ const buildReleaseConfig = env => {
       `[[ -f .nvmrc ]] && ${binPathPrefix}check-node-version --node $(cat .nvmrc)`,
       `${client} install`
     ],
-    test: [`${scriptRunner} travis`],
+    test: [`${scriptRunner} ${env.testRunner}`],
     after_publish: ['git push --follow-tags origin master:master'],
     changelog: [
       `${binPathPrefix}offline-github-changelog > CHANGELOG.md`,
