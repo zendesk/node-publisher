@@ -1,3 +1,8 @@
+### v0.3.0 (2018-08-30)
+
+- [#12](https://github.com/zendesk/node-publisher/pull/12) Autodetect whether package needs to be built during release ([Attila Večerek](mailto:avecerek@zendesk.com))
+- [#13](https://github.com/zendesk/node-publisher/pull/13) Remove the assumption about the output build directory ([Attila Večerek](mailto:avecerek@zendesk.com))
+
 ### v0.2.1 (2018-07-24)
 
 - [#11](https://github.com/zendesk/node-publisher/pull/11) Allow unmodified bundles to be committed ([Attila Večerek](mailto:avecerek@zendesk.com))
