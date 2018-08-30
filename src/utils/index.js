@@ -1,32 +1,39 @@
 const path = require('path');
 const fs = require('fs');
 const command = require('./command');
+const { PACKAGE_JSON_PATH } = require('./constants');
+const { npmClient, publishClient } = require('./client');
 const { readReleaseConfig, buildReleaseConfig } = require('./config');
+const {
+  validatePkgRoot,
+  validateLerna,
+  isBuildDefined
+} = require('./validations');
 
-const VERSIONS = ['major', 'minor', 'patch'];
-const packageJson = path.resolve(process.env.PWD, 'package.json');
+const buildReleaseEnvironment = () => {
+  validatePkgRoot();
 
-const validateEnvironment = () => {
-  if (!fs.existsSync(packageJson)) {
-    throw new Error('Run this script from the root of your package.');
+  const pkg = JSON.parse(fs.readFileSync(PACKAGE_JSON_PATH, 'utf8'));
+
+  const client = publishClient();
+  if (client === 'lerna') {
+    validateLerna();
   }
+
+  return {
+    publishClient: publishClient(),
+    npmClient: npmClient(),
+    withBuildStep: isBuildDefined(pkg)
+  };
 };
 
-const isBuildDefined = () => {
-  const pkg = JSON.parse(fs.readFileSync(packageJson, 'utf8'));
-
-  return pkg.scripts && pkg.scripts.build;
-};
-
-const loadReleaseConfig = () => {
+const loadReleaseConfig = env => {
   const configPath = path.resolve(process.env.PWD, '.release.yml');
 
   return fs.existsSync(configPath)
     ? readReleaseConfig(fs.readFileSync(configPath, 'utf8'))
-    : buildReleaseConfig();
+    : buildReleaseConfig(env);
 };
-
-const validVersion = version => VERSIONS.includes(version);
 
 const execCommands = configCommands => {
   if (configCommands) {
@@ -47,10 +54,8 @@ const currentCommitId = () =>
 const rollbackCommit = commitId => command.exec(`git reset --hard ${commitId}`);
 
 module.exports = {
-  validateEnvironment,
-  isBuildDefined,
+  buildReleaseEnvironment,
   loadReleaseConfig,
-  validVersion,
   execCommands,
   currentCommitId,
   rollbackCommit

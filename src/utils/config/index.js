@@ -1,11 +1,9 @@
 const yaml = require('js-yaml');
-const { npmClient } = require('../client');
-const { isBuildDefined } = require('../');
 
 const readReleaseConfig = str => yaml.safeLoad(str);
 
-const buildReleaseConfig = () => {
-  const client = npmClient();
+const buildReleaseConfig = env => {
+  const client = env.npmClient;
   const binPathPrefix = './node_modules/.bin/';
   const scriptRunner = client === 'yarn' ? 'yarn' : 'npm run';
 
@@ -28,7 +26,7 @@ const buildReleaseConfig = () => {
     ]
   };
 
-  if (isBuildDefined()) {
+  if (env.withBuildStep) {
     config.build = [
       `${scriptRunner} build`,
       'git add .',

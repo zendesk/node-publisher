@@ -2,7 +2,8 @@
 
 const program = require('commander');
 const release = require('../');
-const { validateEnvironment } = require('../src/utils');
+const { buildReleaseEnvironment } = require('../src/utils');
+const { validateVersion } = require('../src/utils/validations');
 
 program
   .description('Releases your package under the specified version.')
@@ -10,9 +11,12 @@ program
   .parse(process.argv);
 
 try {
-  validateEnvironment();
+  const env = buildReleaseEnvironment();
+  const nextVersion = program.args[0];
+
+  validateVersion(nextVersion, env);
   
-  release(program.args[0]);
+  release({ env, nextVersion });
 } catch (e) {
   console.error(`ERROR: ${e.message}`);
   process.exit(1);
