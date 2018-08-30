@@ -12,14 +12,14 @@ const __setMockFiles = newMockFiles => {
   }
 };
 
-let readFileSyncRetValue;
-const __setReadFileSyncReturnValue = val => {
-  readFileSyncRetValue = val;
+const readFileSyncRetValue = {};
+const __setReadFileSyncReturnValue = (file, val) => {
+  readFileSyncRetValue[path.resolve(process.env.PWD, file)] = val;
 };
 
 const existsSync = path => mockFiles.includes(path);
 
-const readFileSync = path => readFileSyncRetValue;
+const readFileSync = path => readFileSyncRetValue[path];
 
 fs.__setMockFiles = __setMockFiles;
 fs.__setReadFileSyncReturnValue = __setReadFileSyncReturnValue;

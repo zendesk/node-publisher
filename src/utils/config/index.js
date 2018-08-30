@@ -1,5 +1,6 @@
 const yaml = require('js-yaml');
 const { npmClient } = require('../client');
+const { isBuildDefined } = require('../');
 
 const readReleaseConfig = str => yaml.safeLoad(str);
 
@@ -8,7 +9,7 @@ const buildReleaseConfig = () => {
   const binPathPrefix = './node_modules/.bin/';
   const scriptRunner = client === 'yarn' ? 'yarn' : 'npm run';
 
-  return {
+  const config = {
     rollback: true,
     prepare: [
       'git diff-index --quiet HEAD --',
@@ -18,11 +19,6 @@ const buildReleaseConfig = () => {
       `${client} install`
     ],
     test: [`${scriptRunner} travis`],
-    build: [
-      `${scriptRunner} build`,
-      'git add .',
-      'git commit --allow-empty -m "Update build file"'
-    ],
     after_publish: ['git push --follow-tags origin master:master'],
     changelog: [
       `${binPathPrefix}offline-github-changelog > CHANGELOG.md`,
@@ -31,6 +27,16 @@ const buildReleaseConfig = () => {
       'git push origin master:master'
     ]
   };
+
+  if (isBuildDefined()) {
+    config.build = [
+      `${scriptRunner} build`,
+      'git add .',
+      'git commit --allow-empty -m "Update build file"'
+    ];
+  }
+
+  return config;
 };
 
 module.exports = {
