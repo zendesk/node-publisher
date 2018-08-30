@@ -56,7 +56,6 @@ The default release process assumes the following:
 
 - The master branch is called `master`.
 - A `.nvmrc` file is present in the root of your package. In case it is missing, the release fails in its preparation phase.
-- A build process is assumed with build files being generated in the `dist/` directory.
 
 ## Lifecycle
 
@@ -100,7 +99,7 @@ test:
 
 build:
   - yarn build
-  - git add dist/
+  - git add .
   - git commit --allow-empty -m "Update build file"
 
 after_publish:
