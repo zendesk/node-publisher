@@ -1,3 +1,7 @@
+### v0.4.1 (2018-08-31)
+
+- [#15](https://github.com/zendesk/node-publisher/pull/15) Fix the order of steps in .release.yml when ejected ([Attila Večerek](mailto:avecerek@zendesk.com))
+
 ### v0.4.0 (2018-08-31)
 
 - [#14](https://github.com/zendesk/node-publisher/pull/14) Add test runner whitelist ([Attila Večerek](mailto:avecerek@zendesk.com))
