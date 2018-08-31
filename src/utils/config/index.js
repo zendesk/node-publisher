@@ -17,6 +17,7 @@ const buildReleaseConfig = env => {
       `${client} install`
     ],
     test: [`${scriptRunner} ${env.testRunner}`],
+    build: null,
     after_publish: ['git push --follow-tags origin master:master'],
     changelog: [
       `${binPathPrefix}offline-github-changelog > CHANGELOG.md`,
@@ -32,6 +33,8 @@ const buildReleaseConfig = env => {
       'git add .',
       'git commit --allow-empty -m "Update build file"'
     ];
+  } else {
+    delete config.build;
   }
 
   return config;
