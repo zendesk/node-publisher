@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const program = require('commander');
 const { safeDump } = require('js-yaml');
-const { validateEnvironment } = require('../src/utils');
+const { buildReleaseEnvironment } = require('../src/utils');
 const { buildReleaseConfig } = require('../src/utils/config');
 
 program
@@ -12,9 +12,9 @@ program
   .parse(process.argv);
 
 try {
-  validateEnvironment();
+  const env = buildReleaseEnvironment({ quiet: true });
 
-  const config = safeDump(buildReleaseConfig(), {
+  const config = safeDump(buildReleaseConfig(env), {
     skipInvalid: true
   });
   

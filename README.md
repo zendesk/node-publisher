@@ -57,6 +57,9 @@ The default release process assumes the following:
 - The master branch is called `master`.
 - A `.nvmrc` file is present in the root of your package. In case it is missing, the release fails in its preparation phase.
 - The tool expects the build generation script to be called `build`. Otherwise, the build step is skipped.
+- The tool expects the test triggering script to be called `travis` or `ci`. The reason is that many times the standard `test` scripts are implemented to watch the files for changes to re-trigger the tests. This tool relies on the test script to return eventually, hence the choice of the commonly used CI-friendly script names. The list of accepted script names may be extended in the future. If both `travis` and `ci` scripts are present, `travis` will be preferred.
+
+*Notice:* the test triggering script (`travis` or `ci`) has to return a value, eventually. Otherwise, the release would stall and not run correctly. Interrupting a stalling release process would also interrupt the `rollback` feature's execution.
 
 ## Lifecycle
 

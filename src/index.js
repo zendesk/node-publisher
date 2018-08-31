@@ -5,12 +5,11 @@ const {
   currentCommitId,
   rollbackCommit
 } = require('./utils');
-const { detectClient } = require('./utils/client');
 const command = require('./utils/command');
 
-const release = nextVersion => {
-  const config = loadReleaseConfig();
-  const publishClient = require(`./client/${detectClient()}.js`);
+const release = ({ env, nextVersion }) => {
+  const config = loadReleaseConfig(env);
+  const publishClient = require(`./client/${env.publishClient}.js`);
 
   let failed = false;
   let commitId = null;

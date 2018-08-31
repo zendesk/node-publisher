@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { LERNA_JSON_PATH } = require('../constants');
 
 const npmClient = () => {
   const clientMap = {
@@ -23,15 +24,13 @@ const npmClient = () => {
   return client;
 };
 
-const detectClient = () => {
-  const lernaConfigExists = fs.existsSync(
-    path.resolve(process.env.PWD, 'lerna.json')
-  );
+const publishClient = () => {
+  const lernaConfigExists = fs.existsSync(LERNA_JSON_PATH);
 
   return lernaConfigExists ? 'lerna' : npmClient();
 };
 
 module.exports = {
   npmClient,
-  detectClient
+  publishClient
 };

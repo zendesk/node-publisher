@@ -1,4 +1,4 @@
-const { npmClient, detectClient } = require('./');
+const { npmClient, publishClient } = require('./');
 
 jest.mock('fs');
 
@@ -40,7 +40,7 @@ describe('npmClient', () => {
   });
 });
 
-describe('detectClient', () => {
+describe('publishClient', () => {
   beforeEach(() => {
     require('fs').__setMockFiles([]);
   });
@@ -51,8 +51,8 @@ describe('detectClient', () => {
     it('returns lerna', () => {
       require('fs').__setMockFiles(MOCKED_FILES);
 
-      expect(detectClient).not.toThrow();
-      expect(detectClient()).toBe('lerna');
+      expect(publishClient).not.toThrow();
+      expect(publishClient()).toBe('lerna');
     });
   });
 
@@ -62,8 +62,8 @@ describe('detectClient', () => {
     it('returns the npm client', () => {
       require('fs').__setMockFiles(MOCKED_FILES);
 
-      expect(detectClient).not.toThrow();
-      expect(detectClient()).toBe('yarn');
+      expect(publishClient).not.toThrow();
+      expect(publishClient()).toBe('yarn');
     });
   });
 });

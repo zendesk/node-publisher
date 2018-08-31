@@ -1,26 +1,14 @@
 const { buildReleaseConfig } = require('./');
 
-jest.mock('fs');
-
 describe('buildReleaseConfig', () => {
   describe('when build script is defined in package.json', () => {
-    const mockPkg = {
-      scripts: {
-        build: './build'
-      }
-    };
+    const baseEnv = { testRunner: 'travis', withBuildStep: true };
 
     describe('and npm is the detected npm client', () => {
-      const MOCKED_FILES = ['package-lock.json', 'package.json'];
+      const env = Object.assign({}, baseEnv, { npmClient: 'npm' });
 
       it('returns a configuration with the build step', () => {
-        require('fs').__setMockFiles(MOCKED_FILES);
-        require('fs').__setReadFileSyncReturnValue(
-          'package.json',
-          JSON.stringify(mockPkg)
-        );
-
-        const config = buildReleaseConfig();
+        const config = buildReleaseConfig(env);
 
         expect(config.prepare[config.prepare.length - 1]).toBe('npm install');
         expect(config.test[0]).toBe('npm run travis');
@@ -29,16 +17,10 @@ describe('buildReleaseConfig', () => {
     });
 
     describe('and yarn is the detected npm client', () => {
-      const MOCKED_FILES = ['yarn.lock', 'package.json'];
+      const env = Object.assign({}, baseEnv, { npmClient: 'yarn' });
 
       it('returns a configuration with the build step', () => {
-        require('fs').__setMockFiles(MOCKED_FILES);
-        require('fs').__setReadFileSyncReturnValue(
-          'package.json',
-          JSON.stringify(mockPkg)
-        );
-
-        const config = buildReleaseConfig();
+        const config = buildReleaseConfig(env);
 
         expect(config.prepare[config.prepare.length - 1]).toBe('yarn install');
         expect(config.test[0]).toBe('yarn travis');
@@ -48,19 +30,14 @@ describe('buildReleaseConfig', () => {
   });
 
   describe('when build script is not defined in package.json', () => {
-    const MOCKED_FILES = ['yarn.lock', 'package.json'];
-    const mockPkg = {
-      scripts: {}
+    const env = {
+      npmClient: 'yarn',
+      testRunner: 'travis',
+      withBuildStep: false
     };
 
     it('returns a configuration without the build step', () => {
-      require('fs').__setMockFiles(MOCKED_FILES);
-      require('fs').__setReadFileSyncReturnValue(
-        'package.json',
-        JSON.stringify(mockPkg)
-      );
-
-      const config = buildReleaseConfig();
+      const config = buildReleaseConfig(env);
 
       expect(config.build).toBeUndefined();
     });
