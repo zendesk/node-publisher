@@ -1,3 +1,7 @@
+### v0.4.0 (2018-08-31)
+
+- [#14](https://github.com/zendesk/node-publisher/pull/14) Add test runner whitelist ([Attila Večerek](mailto:avecerek@zendesk.com))
+
 ### v0.3.0 (2018-08-30)
 
 - [#12](https://github.com/zendesk/node-publisher/pull/12) Autodetect whether package needs to be built during release ([Attila Večerek](mailto:avecerek@zendesk.com))
