@@ -1,3 +1,7 @@
+### v0.4.2 (2018-09-06)
+
+- [#16](https://github.com/zendesk/node-publisher/pull/16) Fix publishing using Lerna ([Attila Večerek](mailto:avecerek@zendesk.com))
+
 ### v0.4.1 (2018-08-31)
 
 - [#15](https://github.com/zendesk/node-publisher/pull/15) Fix the order of steps in .release.yml when ejected ([Attila Večerek](mailto:avecerek@zendesk.com))
