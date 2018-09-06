@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git@github.com:zendesk/node-publisher.git"
   },
-  "version": "0.4.1",
+  "version": "0.4.2",
   "main": "src/index.js",
   "bin": {
     "node-publisher": "./bin/node-publisher"
