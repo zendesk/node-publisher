@@ -6,7 +6,7 @@ describe('publish', () => {
   };
 
   it('publishes new version', () => {
-    expect(() => publish(options)).not.toThrow();
-    expect(options.execCommand.mock.calls[0][0]).toBe('lerna publish');
+    expect(() => publish('patch', options)).not.toThrow();
+    expect(options.execCommand.mock.calls[0][0]).toBe('lerna publish patch');
   });
 });
