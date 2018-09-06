@@ -1,5 +1,5 @@
-const publish = ({ execCommand }) => {
-  execCommand('lerna publish');
+const publish = (nextVersion, { execCommand }) => {
+  execCommand(`lerna publish ${nextVersion}`);
 };
 
 module.exports = {
