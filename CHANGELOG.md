@@ -1,3 +1,7 @@
+### v0.5.0 (2018-09-13)
+
+- [#17](https://github.com/zendesk/node-publisher/pull/17) Commit build files only when there are files staged ([Attila Večerek](mailto:avecerek@zendesk.com))
+
 ### v0.4.2 (2018-09-06)
 
 - [#16](https://github.com/zendesk/node-publisher/pull/16) Fix publishing using Lerna ([Attila Večerek](mailto:avecerek@zendesk.com))
