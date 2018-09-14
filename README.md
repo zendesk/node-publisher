@@ -133,7 +133,17 @@ yarn
 yarn release (major|minor|patch)
 ```
 
-## Owners
-- Email: [delta@zendesk.com](mailto:delta@zendesk.com)
-- Slack: [#delta-team](https://zendesk.slack.com/messages/delta-team/)
-- GitHub: `@zendesk/delta`
+## Contributing
+
+Contributing to `node-publisher` is fairly easy, as long as the following steps are followed:
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
+6. Mention one or more of the maintainers to get the Pull Request approved and merged
+
+### Maintainers
+- Attila Večerek ([@vecerek](https://github.com/vecerek/))
+- Sune Simonsen ([@sunesimonsen](https://github.com/sunesimonsen/))
