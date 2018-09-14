@@ -67,7 +67,7 @@ The default release process assumes the following:
 
 2. `test`: Runs the tests and/or linting. You might want to configure the tool to run the same command as your CI tool does.
 
-3. `build`: Runs your build process. By default it runs either `yarn build` or `npm run build` depending on your npm client.
+3. `build`: Runs your build process. By default it runs either `yarn build` or `npm run build` depending on your npm client. This step is only run if `build` is defined unders `sripts` in your `package.json` file.
 
 4. `publish`: Publishes a new version of your package. By default, the tool detects your npm/publishing client and calls the publish command. Currently supported clients are: `npm`, `yarn`, `lerna`.
 
@@ -77,7 +77,7 @@ The default release process assumes the following:
 
 7. `changelog`: In case the package was successfully published, a changelog is being generated. This tool uses the [offline-github-changelog](https://github.com/sunesimonsen/offline-github-changelog) package for this purpuse.
 
-8. `after_success`: Runs the specified commands after generating a changelog, in case the release process was successful. It might be used to clean up any byproduct of the previous hooks. By default, it unsets the rollback point saved in the `prepare` hook.
+8. `after_success`: Runs the specified commands after generating a changelog, in case the release process was successful. It might be used to clean up any byproduct of the previous hooks.
 
 ## Configuration
 
@@ -103,8 +103,7 @@ test:
 
 build: # only if "build" is defined as a script in your `package.json`
   - yarn build
-  - git add .
-  - git commit --allow-empty -m "Update build file"
+  - git diff --staged --quiet || git commit -am "Update build file"
 
 after_publish:
   - git push --follow-tags origin master:master
@@ -134,7 +133,26 @@ yarn
 yarn release (major|minor|patch)
 ```
 
-## Owners
-- Email: [delta@zendesk.com](mailto:delta@zendesk.com)
-- Slack: [#delta-team](https://zendesk.slack.com/messages/delta-team/)
-- GitHub: `@zendesk/delta`
+## Contributing
+
+Contributing to `node-publisher` is fairly easy, as long as the following steps are followed:
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
+6. Mention one or more of the maintainers to get the Pull Request approved and merged
+
+### Maintainers
+- Attila Večerek ([@vecerek](https://github.com/vecerek/))
+- Sune Simonsen ([@sunesimonsen](https://github.com/sunesimonsen/))
+
+## Copyright and License
+Copyright (c) 2018 Zendesk Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
+
+You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
