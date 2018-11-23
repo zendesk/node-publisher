@@ -37,9 +37,6 @@
     "prettier": "1.13.5",
     "prettier-package-json": "1.6.0"
   },
-  "publishConfig": {
-    "registry": "https://zdrepo.jfrog.io/zdrepo/api/npm/npm"
-  },
   "lint-staged": {
     "linters": {
       "*.js": [
