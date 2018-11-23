@@ -1,6 +1,6 @@
 # node-publisher
 
-This is a configurable release automation tool for node packages inspired by Travis CI. It has a default configuration, which can be overriden in case of need. As a convention, this release tool defines a set of hooks that represent the release lifecycle. The default configuration can be overriden by redefining what commands should run under which hook in a `.release.yml` file. The hooks are listed under the [Lifecycle](#lifecycle) section.
+This is a configurable release automation tool for node packages inspired by [create-react-app](https://github.com/facebook/create-react-app) and [Travis CI](https://travis-ci.org/). It has a default configuration, which can be overriden in case of need. As a convention, this release tool defines a set of hooks that represent the release lifecycle. The default configuration can be overriden by redefining what commands should run under which hook in a `.release.yml` file. The hooks are listed under the [Lifecycle](#lifecycle) section.
 
 ## Getting started
 ### 1. Install the package:
@@ -75,9 +75,9 @@ The default release process assumes the following:
 
 6. `after_failure`: Runs the specified commands in case the release process failed at any point. Before running the configured commands, a rollback to the state after `prepare` might happen - in case the `rollback` option is set to `true` which is the default behaviour.
 
-7. `changelog`: In case the package was successfully published, a changelog is being generated. This tool uses the [offline-github-changelog](https://github.com/sunesimonsen/offline-github-changelog) package for this purpuse.
+7. `changelog`: In case the package was successfully published, a changelog will be generated. This tool uses the [offline-github-changelog](https://github.com/sunesimonsen/offline-github-changelog) package for this purpuse.
 
-8. `after_success`: Runs the specified commands after generating a changelog, in case the release process was successful. It might be used to clean up any byproduct of the previous hooks.
+8. `after_success`: Runs the specified commands after generating the changelog, in case the release process was successful. It might be used to clean up any byproduct of the previous hooks.
 
 ## Configuration
 

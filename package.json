@@ -1,6 +1,6 @@
 {
   "name": "@zendesk/node-publisher",
-  "description": "A configurable release automation tool inspired by Travis CI.",
+  "description": "A configurable release automation tool inspired by create-react-app and Travis CI.",
   "license": "UNLICENSED",
   "author": "Attila Večerek <avecerek@zendesk.com>",
   "repository": {
