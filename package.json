@@ -1,6 +1,6 @@
 {
   "name": "@zendesk/node-publisher",
-  "description": "A configurable release automation tool inspired by Travis CI.",
+  "description": "A configurable release automation tool inspired by create-react-app and Travis CI.",
   "license": "UNLICENSED",
   "author": "Attila Večerek <avecerek@zendesk.com>",
   "repository": {
@@ -36,9 +36,6 @@
     "pre-commit": "1.2.2",
     "prettier": "1.13.5",
     "prettier-package-json": "1.6.0"
-  },
-  "publishConfig": {
-    "registry": "https://zdrepo.jfrog.io/zdrepo/api/npm/npm"
   },
   "lint-staged": {
     "linters": {
