@@ -12,13 +12,13 @@ This is a configurable release automation tool for node packages inspired by [cr
 ## 1. Install the package:
 
 ```
-npm install @zendesk/node-publisher --save-dev
+npm install node-publisher --save-dev
 ```
 
 or
 
 ```
-yarn add --dev @zendesk/node-publisher
+yarn add --dev node-publisher
 ```
 
 ## 2. Add following scripts to `package.json`

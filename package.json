@@ -1,7 +1,6 @@
 {
-  "name": "@zendesk/node-publisher",
+  "name": "node-publisher",
   "description": "A configurable release automation tool inspired by create-react-app and Travis CI.",
-  "license": "UNLICENSED",
   "author": "Attila Večerek <avecerek@zendesk.com>",
   "repository": {
     "type": "git",
@@ -37,6 +36,12 @@
     "prettier": "1.13.5",
     "prettier-package-json": "1.6.0"
   },
+  "licenses": [
+    {
+      "type": "Apache 2.0",
+      "url": "https://github.com/zendesk/node-publisher/blob/master/LICENSE"
+    }
+  ],
   "lint-staged": {
     "linters": {
       "*.js": [
