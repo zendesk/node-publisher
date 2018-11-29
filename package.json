@@ -36,6 +36,10 @@
     "prettier": "1.13.5",
     "prettier-package-json": "1.6.0"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "licenses": [
     {
       "type": "Apache 2.0",
