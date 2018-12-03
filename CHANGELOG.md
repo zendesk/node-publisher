@@ -1,3 +1,10 @@
+### v1.1.0 (2018-12-03)
+
+- [#22](https://github.com/zendesk/node-publisher/pull/22) Add publish config to be able to release with yarn again ([Attila Večerek](mailto:avecerek@zendesk.com))
+- [#21](https://github.com/zendesk/node-publisher/pull/21) Rename package and adds licenses field to package.json ([Attila Večerek](mailto:avecerek@zendesk.com))
+- [#20](https://github.com/zendesk/node-publisher/pull/20) Remove private repo configuration ([Attila Večerek](mailto:avecerek@zendesk.com))
+- [#18](https://github.com/zendesk/node-publisher/pull/18) Update README ([Attila Večerek](mailto:avecerek@zendesk.com))
+
 ### v0.5.0 (2018-09-13)
 
 - [#17](https://github.com/zendesk/node-publisher/pull/17) Commit build files only when there are files staged ([Attila Večerek](mailto:avecerek@zendesk.com))
