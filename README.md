@@ -28,7 +28,7 @@ yarn add --dev node-publisher
 
 {
   ...,
-  "sctipts": {
+  "scripts": {
     "travis": "your linting/testing/etc. command here",
     "release": "node-publisher release",
   },
