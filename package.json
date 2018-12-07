@@ -2,9 +2,13 @@
   "name": "node-publisher",
   "description": "A configurable release automation tool inspired by create-react-app and Travis CI.",
   "author": "Attila Večerek <avecerek@zendesk.com>",
+  "homepage": "https://github.com/zendesk/node-publisher#readme",
   "repository": {
     "type": "git",
-    "url": "git@github.com:zendesk/node-publisher.git"
+    "url": "git+ssh://git@github.com/zendesk/node-publisher.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zendesk/node-publisher/issues"
   },
   "version": "1.1.0",
   "main": "src/index.js",
@@ -36,6 +40,12 @@
     "prettier": "1.13.5",
     "prettier-package-json": "1.6.0"
   },
+  "keywords": [
+    "lerna",
+    "npm",
+    "release-management",
+    "yarn"
+  ],
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
