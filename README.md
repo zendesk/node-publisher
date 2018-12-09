@@ -10,6 +10,9 @@
 
 This is a configurable release automation tool for node packages inspired by [create-react-app](https://github.com/facebook/create-react-app) and [Travis CI](https://travis-ci.org/). It has a default configuration, which can be overriden in case of need. As a convention, this release tool defines a set of hooks that represent the release lifecycle. The default configuration can be overriden by redefining what commands should run under which hook in a `.release.yml` file. The hooks are listed under the [Lifecycle](#lifecycle) section.
 
+[![NPM version](https://badge.fury.io/js/node-publisher.svg)](https://badge.fury.io/js/node-publisher)
+[![Build Status](https://travis-ci.com/zendesk/node-publisher.svg?branch=master)](https://travis-ci.com/zendesk/node-publisher)
+
 # Getting started
 ## 1. Install the package:
 
