@@ -56,7 +56,7 @@ yarn release (major | minor | patch)
 # Customize the release process
 
 ```
-node-publisher eject
+npx node-publisher eject
 ```
 
 After ejecting, a `.release.yml` file will appear in the root directory of your package. You can override the default behaviour by modifying this file.
