@@ -1,3 +1,8 @@
+### v1.1.1 (2018-12-11)
+
+- [#24](https://github.com/zendesk/node-publisher/pull/24) Add details to package.json + minor adjustments ([Attila Večerek](mailto:avecerek@zendesk.com))
+- [#23](https://github.com/zendesk/node-publisher/pull/23) Fix small typo in readme ([Marc Høegh](mailto:Anifacted@users.noreply.github.com))
+
 ### v1.1.0 (2018-12-03)
 
 - [#22](https://github.com/zendesk/node-publisher/pull/22) Add publish config to be able to release with yarn again ([Attila Večerek](mailto:avecerek@zendesk.com))
