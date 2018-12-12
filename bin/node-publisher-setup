@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+
+const program = require('commander');
+const {
+  searchForIssues,
+  askSetupQuestions,
+  run
+} = require('../src/setup');
+
+program
+  .description('Integrates node-publisher by setting up the release script in `package.json`.')
+  .parse(process.argv);
+
+(async () => {
+  try {  
+    const issues = searchForIssues();
+    const answers = askSetupQuestions(issues);
+
+    run(issues, answers);
+
+    console.log('🤘 All set up. Now go and rock it!');
+  } catch (e) {
+    console.error(`ERROR: ${e.message}`);
+    process.exit(1);
+  }
+})();

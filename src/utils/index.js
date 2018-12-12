@@ -14,7 +14,7 @@ const {
   validatePkgRoot,
   validateTestRunner,
   validateLerna,
-  isBuildDefined
+  hasBuildScript
 } = require('./validations');
 
 const packageJson = (() => {
@@ -62,7 +62,7 @@ const buildReleaseEnvironment = ({
     branch: branch,
     configPath: configPath,
     testRunner: testRunner,
-    withBuildStep: isBuildDefined(pkg)
+    withBuildStep: hasBuildScript()
   };
 };
 

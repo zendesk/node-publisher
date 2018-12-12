@@ -1,5 +1,10 @@
 const fs = require('fs');
+const { packageJson } = require('../');
 const {
+  VALID_TEST_RUNNERS,
+  GIT_PATH,
+  NVM_PATH,
+  NVM_CONFIG_PATH,
   PACKAGE_JSON_PATH,
   LERNA_JSON_PATH
 } = require('../constants');
@@ -26,11 +31,37 @@ const validateLerna = () => {
   );
 };
 
-const isBuildDefined = pkg => pkg.scripts && pkg.scripts.build;
+const isGitProject = () => fs.existsSync(GIT_PATH);
+
+const isNvmInstalled = () => fs.existsSync(NVM_PATH);
+
+const nvmrcExists = () => fs.existsSync(NVM_CONFIG_PATH);
+
+const hasBuildScript = () => {
+  const pkg = packageJson();
+  if (!pkg.scripts) {
+    return false;
+  }
+
+  return 'build' in pkg.scripts;
+};
+
+const hasCiScript = () => {
+  const pkg = packageJson();
+  if (!pkg.scripts) {
+    return false;
+  }
+
+  return VALID_TEST_RUNNERS.some(testRunner => testRunner in pkg.scripts);
+};
 
 module.exports = {
   validatePkgRoot,
   validateTestRunner,
   validateLerna,
-  isBuildDefined
+  isGitProject,
+  isNvmInstalled,
+  nvmrcExists,
+  hasBuildScript,
+  hasCiScript
 };
