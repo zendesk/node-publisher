@@ -3,6 +3,7 @@ const fs = require('fs');
 const command = require('./command');
 const {
   PACKAGE_JSON_PATH,
+  DEFAULT_CONFIG_PATH,
   VALID_TEST_RUNNERS,
   DEFAULT_TEST_RUNNER
 } = require('./constants');
@@ -15,11 +16,16 @@ const {
   isBuildDefined
 } = require('./validations');
 
-const buildReleaseEnvironment = ({ quiet = false }) => {
+const buildReleaseEnvironment = ({
+  configPath = DEFAULT_CONFIG_PATH,
+  quiet = false
+}) => {
   validatePkgRoot();
 
   const pkg = JSON.parse(fs.readFileSync(PACKAGE_JSON_PATH, 'utf8'));
-  const testRunner = VALID_TEST_RUNNERS.find(script => script in pkg.scripts);
+  const testRunner =
+    VALID_TEST_RUNNERS.find(script => script in pkg.scripts) ||
+    DEFAULT_TEST_RUNNER;
 
   try {
     validateTestRunner(testRunner);
@@ -37,17 +43,26 @@ const buildReleaseEnvironment = ({ quiet = false }) => {
   return {
     publishClient: publishClient(),
     npmClient: npmClient(),
-    testRunner: testRunner || DEFAULT_TEST_RUNNER,
+    configPath: configPath,
+    testRunner: testRunner,
     withBuildStep: isBuildDefined(pkg)
   };
 };
 
 const loadReleaseConfig = env => {
-  const configPath = path.resolve(process.env.PWD, '.release.yml');
+  const configPath = path.isAbsolute(env.configPath)
+    ? env.configPath
+    : path.resolve(process.env.PWD, env.configPath);
 
-  return fs.existsSync(configPath)
-    ? readReleaseConfig(fs.readFileSync(configPath, 'utf8'))
-    : buildReleaseConfig(env);
+  if (fs.existsSync(configPath)) {
+    return readReleaseConfig(fs.readFileSync(configPath, 'utf8'));
+  } else if (env.configPath !== DEFAULT_CONFIG_PATH) {
+    throw new Error(
+      `The configuration file \`${env.configPath}\` does not exist.`
+    );
+  }
+
+  return buildReleaseConfig(env);
 };
 
 const execCommands = configCommands => {
