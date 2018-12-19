@@ -3,20 +3,17 @@
 const program = require('commander');
 const release = require('../');
 const { buildReleaseEnvironment } = require('../src/utils');
-const { validateVersion } = require('../src/utils/validations');
 
 program
   .description('Releases your package under the specified version.')
-  .option('[version]', 'specify the release version: (major|minor|patch)')
+  .option('[version]', 'specify the release version; accepts the versions of the npm client in use.')
   .parse(process.argv);
 
 try {
-  const env = buildReleaseEnvironment({});
-  const nextVersion = program.args[0];
-
-  validateVersion(nextVersion, env);
-  
-  release({ env, nextVersion });
+  release({
+    env: buildReleaseEnvironment({}),
+    nextVersion: program.args[0]
+  });
 } catch (e) {
   console.error(`ERROR: ${e.message}`);
   process.exit(1);
