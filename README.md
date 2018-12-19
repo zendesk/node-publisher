@@ -43,19 +43,25 @@ yarn add --dev node-publisher
 
 # Usage
 
-```
-npm run release -- (major | minor | patch)
+```sh
+npm run release -- <version>
 ```
 
 or 
 
+```sh
+yarn release <version>
 ```
-yarn release (major | minor | patch)
+
+Since `v1.2.0`, node-publisher supports the version options supported by the detected npm client. In earlier versions, only `major`, `minor` and `patch` options were accepted. When using `yarn`, the pre-release identifier (`--preid`) is ignored.
+
+```sh
+npm run release -- <version> --preid alpha
 ```
 
 # Customize the release process
 
-```
+```sh
 npx node-publisher eject
 ```
 
@@ -135,13 +141,13 @@ changelog:
 # Development
 
 ## Install packages
-```
+```sh
 yarn
 ```
 
 ## Release a new version
-```
-yarn release (major|minor|patch)
+```sh
+yarn release <version>
 ```
 
 # Contributing
