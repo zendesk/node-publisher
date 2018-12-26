@@ -1,3 +1,7 @@
+### v1.2.0 (2018-12-26)
+
+- [#27](https://github.com/zendesk/node-publisher/pull/27) Remove version constraints and add prerelease option ([Attila Večerek](mailto:avecerek@zendesk.com))
+
 ### v1.1.1 (2018-12-11)
 
 - [#24](https://github.com/zendesk/node-publisher/pull/24) Add details to package.json + minor adjustments ([Attila Večerek](mailto:avecerek@zendesk.com))
