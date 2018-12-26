@@ -1,5 +1,9 @@
-const publish = (nextVersion, { execCommand }) => {
-  execCommand(`lerna publish ${nextVersion}`);
+const publish = ({ nextVersion, execCommand, preid }) => {
+  const publishCommand = preid
+    ? `lerna publish ${nextVersion} --preid ${preid}`
+    : `lerna publish ${nextVersion}`;
+
+  execCommand(publishCommand);
 };
 
 module.exports = {

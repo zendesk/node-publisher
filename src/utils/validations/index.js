@@ -19,15 +19,6 @@ const validateTestRunner = testRunner => {
   }
 };
 
-const validateVersion = (version, env) => {
-  if (env.publishClient === 'lerna') return;
-  if (VERSIONS.includes(version)) return;
-
-  throw new Error(
-    'Version argument is not supported, use either `major`, `minor` or `patch`'
-  );
-};
-
 const validateLerna = () => {
   if (fs.existsSync(LERNA_JSON_PATH)) return;
 
@@ -41,7 +32,6 @@ const isBuildDefined = pkg => pkg.scripts && pkg.scripts.build;
 module.exports = {
   validatePkgRoot,
   validateTestRunner,
-  validateVersion,
   validateLerna,
   isBuildDefined
 };

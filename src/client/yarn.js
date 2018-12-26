@@ -1,4 +1,4 @@
-const publish = (nextVersion, { execCommand }) => {
+const publish = ({ nextVersion, execCommand }) => {
   execCommand(`yarn publish --new-version ${nextVersion}`);
 };
 

@@ -1,5 +1,9 @@
-const publish = (nextVersion, { execCommand }) => {
-  execCommand(`npm version ${nextVersion}`);
+const publish = ({ nextVersion, execCommand, preid }) => {
+  const versionCommand = preid
+    ? `npm version ${nextVersion} --preid=${preid}`
+    : `npm version ${nextVersion}`;
+
+  execCommand(versionCommand);
   execCommand('npm publish');
 };
 

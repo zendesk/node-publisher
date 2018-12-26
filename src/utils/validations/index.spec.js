@@ -1,7 +1,6 @@
 const {
   validatePkgRoot,
   validateTestRunner,
-  validateVersion,
   validateLerna,
   isBuildDefined
 } = require('./');
@@ -50,37 +49,6 @@ describe('validateTestRunner', () => {
 
     it('throws an error', () => {
       expect(() => validateTestRunner(testRunner)).toThrow();
-    });
-  });
-});
-
-describe('validateVersion', () => {
-  describe('when lerna is the detected publish client', () => {
-    const env = { publishClient: 'lerna' };
-    const version = null;
-
-    it('does not throw an error', () => {
-      expect(() => validateVersion(version, env)).not.toThrow();
-    });
-  });
-
-  describe('when lerna is not the detected publish client', () => {
-    const env = { publishClient: 'yarn' };
-
-    describe('and version is valid', () => {
-      const version = 'patch';
-
-      it('does not throw an error', () => {
-        expect(() => validateVersion(version, env)).not.toThrow();
-      });
-    });
-
-    describe('and version is not valid', () => {
-      const version = 'prepatch';
-
-      it('throws an error', () => {
-        expect(() => validateVersion(version, env)).toThrow();
-      });
     });
   });
 });

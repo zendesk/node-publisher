@@ -1,13 +1,13 @@
 const {
   loadReleaseConfig,
   execCommands,
-  validVersion,
   currentCommitId,
   rollbackCommit
 } = require('./utils');
 const command = require('./utils/command');
 
-const release = ({ env, nextVersion }) => {
+const release = (options) => {
+  const { env } = options;
   const config = loadReleaseConfig(env);
   const publishClient = require(`./client/${env.publishClient}.js`);
 
@@ -22,10 +22,9 @@ const release = ({ env, nextVersion }) => {
     if (config.publish) {
       execCommands(config.publish);
     } else {
-      publishClient.publish(nextVersion, {
-        validVersion,
-        execCommand: command.exec
-      });
+      publishClient.publish(Object.assign(
+        {}, options, { execCommand: command.exec }
+      ));
     }
 
     execCommands(config.after_publish);
