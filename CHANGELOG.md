@@ -1,3 +1,7 @@
+### v1.3.0 (2019-01-03)
+
+- [#26](https://github.com/zendesk/node-publisher/pull/26) Support multiple release configurations ([Attila Večerek](mailto:avecerek@zendesk.com))
+
 ### v1.2.0 (2018-12-26)
 
 - [#27](https://github.com/zendesk/node-publisher/pull/27) Remove version constraints and add prerelease option ([Attila Večerek](mailto:avecerek@zendesk.com))
