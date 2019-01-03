@@ -67,6 +67,23 @@ npx node-publisher eject
 
 After ejecting, a `.release.yml` file will appear in the root directory of your package. You can override the default behaviour by modifying this file.
 
+## Multiple configuration files
+
+Using the `--config` release param, it is possible to specify which file to load the release steps from. This way, one can have different release procedures for different purposes.
+
+Example:
+
+```js
+// package.json
+
+{
+  "scripts": {
+    "release": "node-publisher release",
+    "pre-release": "node-publisher release --config path/to/.pre-release.yml"
+  }
+}
+```
+
 # Prerequisites
 
 The default release process assumes the following:

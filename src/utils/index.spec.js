@@ -1,6 +1,7 @@
+const path = require('path');
 const childProcess = require('child_process');
 const { execSync } = childProcess;
-const { DEFAULT_TEST_RUNNER } = require('./constants');
+const { DEFAULT_TEST_RUNNER, DEFAULT_CONFIG_PATH } = require('./constants');
 const {
   buildReleaseEnvironment,
   loadReleaseConfig,
@@ -33,6 +34,24 @@ describe('buildReleaseEnvironment', () => {
   const throwError = () => {
     throw new Error();
   };
+
+  describe('when configPath is passed', () => {
+    beforeAll(() => mockTestRunner('test'));
+
+    it('contains the passed in config path', () => {
+      const env = buildReleaseEnvironment({ configPath: '.pre-release.yml' });
+
+      expect(env.configPath).toBe('.pre-release.yml');
+    });
+  });
+
+  describe('when configPath is not passed', () => {
+    it('contains the default config path', () => {
+      const env = buildReleaseEnvironment({});
+
+      expect(env.configPath).toBe(DEFAULT_CONFIG_PATH);
+    });
+  });
 
   describe('when errors are silenced', () => {
     const options = Object.assign({}, baseOptions, { quiet: true });
@@ -116,31 +135,74 @@ describe('buildReleaseEnvironment', () => {
 });
 
 describe('loadReleaseConfig', () => {
-  describe('when .release.yml is present in the root pkg directory', () => {
-    const MOCKED_FILES = ['.release.yml'];
+  describe('when the default configPath is passed', () => {
+    describe('and .release.yml is present in the root pkg directory', () => {
+      it('reads the custom release config from the file', () => {
+        const MOCKED_FILES = ['.release.yml'];
 
-    it('loads the custom configuration', () => {
-      require('fs').__setMockFiles(MOCKED_FILES);
-      require('fs').__setReadFileSyncReturnValue(
-        '.release.yml',
-        'file contents'
-      );
-      config.readReleaseConfig.mockReturnValue('configuration');
+        require('fs').__setMockFiles(MOCKED_FILES);
+        require('fs').__setReadFileSyncReturnValue(
+          DEFAULT_CONFIG_PATH,
+          'file contents'
+        );
+        config.readReleaseConfig.mockReturnValue('configuration');
 
-      const strConfig = loadReleaseConfig();
+        loadReleaseConfig({ configPath: DEFAULT_CONFIG_PATH });
 
-      expect(config.readReleaseConfig).toHaveBeenCalledWith('file contents');
-      expect(strConfig).toBe('configuration');
+        expect(config.readReleaseConfig).toHaveBeenCalledWith('file contents');
+      });
+    });
+
+    describe('and .release.yml is not present in the root pkg directory', () => {
+      it('loads the default configuration', () => {
+        require('fs').__setMockFiles([]);
+
+        loadReleaseConfig({ configPath: DEFAULT_CONFIG_PATH });
+
+        expect(config.buildReleaseConfig).toHaveBeenCalled();
+      });
     });
   });
 
-  describe('when .release.yml is not present in the root pkg directory', () => {
-    it('loads the default configuration', () => {
-      require('fs').__setMockFiles([]);
+  describe('when a non-default configPath is passed', () => {
+    describe('and the config file is present in the file system', () => {
+      beforeAll(() => {
+        const MOCKED_FILES = ['.pre-release.yml', '/path/.release.yml'];
 
-      loadReleaseConfig();
+        require('fs').__setMockFiles(MOCKED_FILES);
+        require('fs').__setReadFileSyncReturnValue('.pre-release.yml', 'a');
+        require('fs').__setReadFileSyncReturnValue('/path/.release.yml', 'b');
+      });
 
-      expect(config.buildReleaseConfig).toHaveBeenCalled();
+      it('reads the release config from a relative path', () => {
+        const fileExistsSpy = jest.spyOn(require('fs'), 'existsSync');
+
+        loadReleaseConfig({ configPath: '.pre-release.yml' });
+
+        expect(config.readReleaseConfig).toHaveBeenCalledWith('a');
+        expect(fileExistsSpy).toHaveBeenCalledWith(
+          path.resolve(process.env.PWD, '.pre-release.yml')
+        );
+      });
+
+      it('reads the release config from an absolute path', () => {
+        const fileExistsSpy = jest.spyOn(require('fs'), 'existsSync');
+
+        loadReleaseConfig({ configPath: '/path/.release.yml' });
+
+        expect(config.readReleaseConfig).toHaveBeenCalledWith('b');
+        expect(fileExistsSpy).toHaveBeenCalledWith('/path/.release.yml');
+      });
+    });
+
+    describe('and the config file is not present in the file system', () => {
+      it('throws an error', () => {
+        require('fs').__setMockFiles([]);
+
+        expect(() => {
+          loadReleaseConfig({ configPath: '.pre-release.yml' });
+        }).toThrow();
+      });
     });
   });
 });
