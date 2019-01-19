@@ -26,8 +26,10 @@
   "dependencies": {
     "check-node-version": "3.2.0",
     "commander": "2.15.1",
+    "inquirer": "6.2.1",
     "js-yaml": "3.12.0",
-    "offline-github-changelog": "1.2.0"
+    "offline-github-changelog": "1.2.0",
+    "semver": "5.6.0"
   },
   "devDependencies": {
     "babel-eslint": "8.2.3",
