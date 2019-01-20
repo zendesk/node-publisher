@@ -8,12 +8,13 @@ program
   .description('Releases your package under the specified version.')
   .option('[version]', 'specify the release version; accepts the versions of the npm client in use.')
   .option('--preid <prerelease-id>', 'specify the prerelease identifier (pre, alpha, beta, etc.).')
+  .option('-b, --branch <branch>', 'specify the branch to be checked out during the release process')
   .option('-c, --config <path>', 'set config path. Defaults to ./.release.yml')
   .parse(process.argv);
 
 try {
   release({
-    env: buildReleaseEnvironment({ configPath: program.config }),
+    env: buildReleaseEnvironment({ branch: program.branch, configPath: program.config }),
     nextVersion: program.args[0],
     preid: program.preid
   });
