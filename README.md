@@ -67,6 +67,9 @@ npx node-publisher eject
 
 After ejecting, a `.release.yml` file will appear in the root directory of your package. You can override the default behaviour by modifying this file.
 
+## Custom branch
+Using the `--branch` release param, it is possible to specify which branch should be checked out during the `prepare` [lifecycle](#lifecycle) step. When no `branch` is specified, the `master` branch will be checked out by default.
+
 ## Multiple configuration files
 
 Using the `--config` release param, it is possible to specify which file to load the release steps from. This way, one can have different release procedures for different purposes.

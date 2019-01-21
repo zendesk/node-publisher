@@ -4,6 +4,7 @@ const command = require('./command');
 const {
   PACKAGE_JSON_PATH,
   DEFAULT_CONFIG_PATH,
+  DEFAULT_BRANCH,
   VALID_TEST_RUNNERS,
   DEFAULT_TEST_RUNNER
 } = require('./constants');
@@ -17,6 +18,7 @@ const {
 } = require('./validations');
 
 const buildReleaseEnvironment = ({
+  branch = DEFAULT_BRANCH,
   configPath = DEFAULT_CONFIG_PATH,
   quiet = false
 }) => {
@@ -43,6 +45,7 @@ const buildReleaseEnvironment = ({
   return {
     publishClient: publishClient(),
     npmClient: npmClient(),
+    branch: branch,
     configPath: configPath,
     testRunner: testRunner,
     withBuildStep: isBuildDefined(pkg)

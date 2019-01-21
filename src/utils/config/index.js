@@ -11,7 +11,7 @@ const buildReleaseConfig = env => {
     rollback: true,
     prepare: [
       'git diff-index --quiet HEAD --',
-      'git checkout master',
+      `git checkout ${env.branch}`,
       'git pull --rebase',
       `[[ -f .nvmrc ]] && ${binPathPrefix}check-node-version --node $(cat .nvmrc)`,
       `${client} install`

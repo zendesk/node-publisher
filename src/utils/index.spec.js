@@ -1,7 +1,11 @@
 const path = require('path');
 const childProcess = require('child_process');
 const { execSync } = childProcess;
-const { DEFAULT_TEST_RUNNER, DEFAULT_CONFIG_PATH } = require('./constants');
+const {
+  DEFAULT_TEST_RUNNER,
+  DEFAULT_BRANCH,
+  DEFAULT_CONFIG_PATH
+} = require('./constants');
 const {
   buildReleaseEnvironment,
   loadReleaseConfig,
@@ -34,6 +38,24 @@ describe('buildReleaseEnvironment', () => {
   const throwError = () => {
     throw new Error();
   };
+
+  describe('when branch is passed', () => {
+    beforeAll(() => mockTestRunner('test'));
+
+    it('contains the passed in branch', () => {
+      const env = buildReleaseEnvironment({ branch: 'my-branch' });
+
+      expect(env.branch).toBe('my-branch');
+    });
+  });
+
+  describe('when branch is not passed', () => {
+    it('contains the default branch', () => {
+      const env = buildReleaseEnvironment({});
+
+      expect(env.branch).toBe(DEFAULT_BRANCH);
+    });
+  });
 
   describe('when configPath is passed', () => {
     beforeAll(() => mockTestRunner('test'));
