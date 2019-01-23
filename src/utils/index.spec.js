@@ -11,7 +11,8 @@ const {
   loadReleaseConfig,
   execCommands,
   currentCommitId,
-  rollbackCommit
+  rollbackCommit,
+  versionTransformer
 } = require('./index');
 const config = require('./config');
 const validations = require('./validations');
@@ -295,5 +296,25 @@ describe('rollbackCommit', () => {
     );
 
     execSync.mockClear();
+  });
+});
+
+describe('versionTransformer', () => {
+  describe('when isFinal flag is true', () => {
+    const isFinal = true;
+
+    it('returns the version with the "v" prefix', () => {
+      expect(versionTransformer('9.11.1', [], { isFinal })).toBe('v9.11.1');
+      expect(versionTransformer('v9.11.1', [], { isFinal })).toBe('v9.11.1');
+    });
+  });
+
+  describe('when isFinal flag is false', () => {
+    const isFinal = false;
+
+    it('returns the version as input by the user', () => {
+      expect(versionTransformer('9.11.1', [], { isFinal })).toBe('9.11.1');
+      expect(versionTransformer('v9.11.1', [], { isFinal })).toBe('v9.11.1');
+    });
   });
 });
