@@ -17,6 +17,20 @@ const {
   isBuildDefined
 } = require('./validations');
 
+const packageJson = (() => {
+  let pkg;
+
+  const readPkg = () => {
+    if (pkg) return pkg;
+
+    pkg = JSON.parse(fs.readFileSync(PACKAGE_JSON_PATH, 'utf8'));
+
+    return pkg;
+  };
+
+  return readPkg;
+})();
+
 const buildReleaseEnvironment = ({
   branch = DEFAULT_BRANCH,
   configPath = DEFAULT_CONFIG_PATH,
@@ -87,6 +101,7 @@ const currentCommitId = () =>
 const rollbackCommit = commitId => command.exec(`git reset --hard ${commitId}`);
 
 module.exports = {
+  packageJson,
   buildReleaseEnvironment,
   loadReleaseConfig,
   execCommands,

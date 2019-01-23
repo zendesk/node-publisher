@@ -7,6 +7,7 @@ const {
   DEFAULT_CONFIG_PATH
 } = require('./constants');
 const {
+  packageJson,
   buildReleaseEnvironment,
   loadReleaseConfig,
   execCommands,
@@ -32,6 +33,25 @@ const mockTestRunner = testRunner =>
       }
     })
   );
+
+describe('packageJson', () => {
+  it('returns the package.json as a JSON object', () => {
+    require('fs').__setReadFileSyncReturnValue(
+      'package.json',
+      JSON.stringify({
+        scripts: {
+          test: 'jest'
+        }
+      })
+    );
+
+    expect(packageJson()).toEqual({
+      scripts: {
+        test: 'jest'
+      }
+    });
+  });
+});
 
 describe('buildReleaseEnvironment', () => {
   const baseOptions = {};
