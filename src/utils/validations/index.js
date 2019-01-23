@@ -1,6 +1,5 @@
 const fs = require('fs');
 const {
-  VERSIONS,
   PACKAGE_JSON_PATH,
   LERNA_JSON_PATH
 } = require('../constants');
