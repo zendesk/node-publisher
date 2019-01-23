@@ -38,7 +38,7 @@ const buildReleaseEnvironment = ({
 }) => {
   validatePkgRoot();
 
-  const pkg = JSON.parse(fs.readFileSync(PACKAGE_JSON_PATH, 'utf8'));
+  const pkg = packageJson();
   const testRunner =
     VALID_TEST_RUNNERS.find(script => script in pkg.scripts) ||
     DEFAULT_TEST_RUNNER;
