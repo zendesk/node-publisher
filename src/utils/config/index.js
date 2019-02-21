@@ -30,7 +30,7 @@ const buildReleaseConfig = env => {
   if (env.withBuildStep) {
     config.build = [
       `${scriptRunner} build`,
-      'git diff --staged --quiet || git commit -am "Update build file"'
+      'git diff --quiet || git commit -am "Update build file"'
     ];
   } else {
     delete config.build;
