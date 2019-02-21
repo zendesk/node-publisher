@@ -1,3 +1,8 @@
+### v1.3.1 (2019-02-21)
+
+- [#30](https://github.com/zendesk/node-publisher/pull/30) Fix the build step not committing the changes ([Attila Večerek](mailto:avecerek@zendesk.com))
+- [#28](https://github.com/zendesk/node-publisher/pull/28) Add --branch release param ([Attila Večerek](mailto:avecerek@zendesk.com))
+
 ### v1.3.0 (2019-01-03)
 
 - [#26](https://github.com/zendesk/node-publisher/pull/26) Support multiple release configurations ([Attila Večerek](mailto:avecerek@zendesk.com))
