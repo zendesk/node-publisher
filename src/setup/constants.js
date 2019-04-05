@@ -21,6 +21,7 @@ const messages = {
 const warnings = {
   NVM_NOT_INSTALLED: `Your system does not have NVM installed. Install NVM (https://github.com/creationix/nvm#installation) or eject by running \`npx node-publisher eject\` and \
 customize the release process to skip checking the Node version before release.`,
+  BUILD_MISSING: `An empty build script has been set up for you under the key \`build\`. Make sure to set up your build procedure there.`,
   CI_MISSING: `An empty CI script under the key \`ci\` has been generated for you in your package.json. It is strongly recommended to define your testing procedure there. \
 Make sure your procedure exits with a status that can be read from the terminal with $?`,
   CUSTOM_CONFIG: `Your project setup most probably requires a customized release process. No changes have been made to your project setup.\n\

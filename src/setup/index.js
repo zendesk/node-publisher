@@ -108,6 +108,10 @@ const run = (issues, answers) => {
 
   updatePackageJson(answers);
 
+  if (answers[BUILD_MISSING] === true) {
+    warn(warnings.BUILD_MISSING);
+  }
+
   if (issues[CI_MISSING] === true) {
     warn(warnings.CI_MISSING);
   }
