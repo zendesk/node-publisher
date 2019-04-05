@@ -4,7 +4,6 @@ const inquirer = require('inquirer');
 const { generateQuestions, askNvmVersion } = require('./questions');
 const {
   names: {
-    WITHOUT_GIT,
     DEFAULT_BRANCH,
     GENERATE_NVMRC,
     NVM_VERSION,
@@ -51,7 +50,7 @@ const searchForIssues = () => {
       choices: gitBranches()
     };
   } else {
-    throw new Error(errors[WITHOUT_GIT]);
+    throw new Error(errors.WITHOUT_GIT);
   }
 
   const nvmInstalled = isNvmInstalled();
