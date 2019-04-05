@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { packageJson } = require('../');
+const { packageJson } = require('../package');
 const {
   VALID_TEST_RUNNERS,
   GIT_PATH,

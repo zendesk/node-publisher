@@ -1,4 +1,4 @@
-const utils = require('../');
+const utils = require('../package');
 const { VALID_TEST_RUNNERS, NVM_PATH } = require('../constants');
 const {
   validatePkgRoot,
@@ -12,7 +12,7 @@ const {
 } = require('./');
 
 jest.mock('fs');
-jest.mock('../');
+jest.mock('../package');
 
 describe('validatePkgRoot', () => {
   beforeEach(() => {

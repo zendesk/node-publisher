@@ -7,12 +7,12 @@ const {
   DEFAULT_CONFIG_PATH
 } = require('./constants');
 const {
-  packageJson,
   buildReleaseEnvironment,
   loadReleaseConfig,
   execCommands,
   currentCommitId,
-  rollbackCommit
+  rollbackCommit,
+  versionTransformer
 } = require('./index');
 const config = require('./config');
 const validations = require('./validations');
@@ -33,25 +33,6 @@ const mockTestRunner = testRunner =>
       }
     })
   );
-
-describe('packageJson', () => {
-  it('returns the package.json as a JSON object', () => {
-    require('fs').__setReadFileSyncReturnValue(
-      'package.json',
-      JSON.stringify({
-        scripts: {
-          test: 'jest'
-        }
-      })
-    );
-
-    expect(packageJson()).toEqual({
-      scripts: {
-        test: 'jest'
-      }
-    });
-  });
-});
 
 describe('buildReleaseEnvironment', () => {
   const baseOptions = {};
@@ -315,5 +296,25 @@ describe('rollbackCommit', () => {
     );
 
     execSync.mockClear();
+  });
+});
+
+describe('versionTransformer', () => {
+  describe('when isFinal flag is true', () => {
+    const isFinal = true;
+
+    it('returns the version with the "v" prefix', () => {
+      expect(versionTransformer('9.11.1', [], { isFinal })).toBe('v9.11.1');
+      expect(versionTransformer('v9.11.1', [], { isFinal })).toBe('v9.11.1');
+    });
+  });
+
+  describe('when isFinal flag is false', () => {
+    const isFinal = false;
+
+    it('returns the version as input by the user', () => {
+      expect(versionTransformer('9.11.1', [], { isFinal })).toBe('9.11.1');
+      expect(versionTransformer('v9.11.1', [], { isFinal })).toBe('v9.11.1');
+    });
   });
 });

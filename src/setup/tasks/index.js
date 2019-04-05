@@ -1,10 +1,10 @@
 const fs = require('fs');
-const { packageJson } = require('../../utils');
+const { packageJson } = require('../../utils/package');
 const { PACKAGE_JSON_PATH, NVM_CONFIG_PATH } = require('../../utils/constants');
 const {
   names: { DEFAULT_BRANCH, BUILD_MISSING, CI_MISSING }
 } = require('../constants');
-const { versionTransformer } = require('../');
+const { versionTransformer } = require('../../utils');
 
 const buildScripts = answers => {
   const defaultBranch = answers[DEFAULT_BRANCH] || 'master';

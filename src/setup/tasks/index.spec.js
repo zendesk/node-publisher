@@ -1,4 +1,4 @@
-const utils = require('../../utils');
+const utils = require('../../utils/package');
 const { NVM_CONFIG_PATH, PACKAGE_JSON_PATH } = require('../../utils/constants');
 const {
   buildScripts,
@@ -8,7 +8,7 @@ const {
 } = require('./');
 
 jest.mock('fs');
-jest.mock('../../utils');
+jest.mock('../../utils/package');
 
 describe('buildScripts', () => {
   describe('when the default branch is not master', () => {

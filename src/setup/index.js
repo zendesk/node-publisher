@@ -14,6 +14,7 @@ const {
   errors
 } = require('./constants');
 const { updatePackageJson, generateNvmrcFile, warn } = require('./tasks');
+const { versionTransformer } = require('../utils');
 const {
   isGitProject,
   isNvmInstalled,
@@ -38,9 +39,6 @@ const gitBranches = () => {
 
 const validateVersion = version =>
   semver.valid(version) ? true : errors.NVM_VERSION;
-
-const versionTransformer = (version, _answers, flags) =>
-  flags.isFinal && version[0] !== 'v' ? `v${version}` : version;
 
 const searchForIssues = () => {
   const issues = {};
@@ -125,7 +123,6 @@ const run = (issues, answers) => {
 module.exports = {
   gitBranches,
   validateVersion,
-  versionTransformer,
   searchForIssues,
   askSetupQuestions,
   run

@@ -2,7 +2,6 @@ const path = require('path');
 const fs = require('fs');
 const command = require('./command');
 const {
-  PACKAGE_JSON_PATH,
   DEFAULT_CONFIG_PATH,
   DEFAULT_BRANCH,
   VALID_TEST_RUNNERS,
@@ -10,26 +9,13 @@ const {
 } = require('./constants');
 const { npmClient, publishClient } = require('./client');
 const { readReleaseConfig, buildReleaseConfig } = require('./config');
+const { packageJson } = require('./package');
 const {
   validatePkgRoot,
   validateTestRunner,
   validateLerna,
   hasBuildScript
 } = require('./validations');
-
-const packageJson = (() => {
-  let pkg;
-
-  const readPkg = () => {
-    if (pkg) return pkg;
-
-    pkg = JSON.parse(fs.readFileSync(PACKAGE_JSON_PATH, 'utf8'));
-
-    return pkg;
-  };
-
-  return readPkg;
-})();
 
 const buildReleaseEnvironment = ({
   branch = DEFAULT_BRANCH,
@@ -100,11 +86,14 @@ const currentCommitId = () =>
 
 const rollbackCommit = commitId => command.exec(`git reset --hard ${commitId}`);
 
+const versionTransformer = (version, _answers, flags) =>
+  flags.isFinal && version[0] !== 'v' ? `v${version}` : version;
+
 module.exports = {
-  packageJson,
   buildReleaseEnvironment,
   loadReleaseConfig,
   execCommands,
   currentCommitId,
-  rollbackCommit
+  rollbackCommit,
+  versionTransformer
 };
