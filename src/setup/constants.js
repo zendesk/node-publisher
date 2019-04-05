@@ -22,9 +22,10 @@ const warnings = {
   NVM_NOT_INSTALLED: `Your system does not have NVM installed. Install NVM (https://github.com/creationix/nvm#installation) or eject by running \`npx node-publisher eject\` and \
 customize the release process to skip checking the Node version before release.`,
   CI_MISSING: `An empty CI script under the key \`ci\` has been generated for you in your package.json. It is strongly recommended to define your testing procedure there. \
-Make sure you procedure exits with a status that can be read from the terminal with \`$?\``,
-  CUSTOM_CONFIG:
-    'Your project setup requires a customized release process. Please, run `npx node-publisher eject` and customize your release.'
+Make sure your procedure exits with a status that can be read from the terminal with $?`,
+  CUSTOM_CONFIG: `Your project setup most probably requires a customized release process. No changes have been made to your project setup.\n\
+To customize your release, run \`npx node-publisher eject\`.\n\
+For more info, check out the documentation: https://github.com/zendesk/node-publisher#customize-the-release-process.`
 };
 
 const errors = {
