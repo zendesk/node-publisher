@@ -214,10 +214,25 @@ describe('askSetupQuestions', () => {
       };
     });
 
+    describe('and the user does not want a CI script to be generated', () => {
+      it('skips the second round of questioning', async () => {
+        inquirer.prompt.mockImplementation(async () => ({
+          [names.CI_MISSING]: false
+        }));
+
+        await askSetupQuestions({
+          nvmrcExists: () => true
+        });
+
+        expect(inquirer.prompt).toHaveBeenCalledTimes(1);
+      });
+    });
+
     describe('and NVM is installed', () => {
       it('proceeds with the second round of questioning', async () => {
         inquirer.prompt.mockImplementation(async () => ({
-          [names.NVM_VERSION]: '9.11.1'
+          [names.NVM_VERSION]: '9.11.1',
+          [names.CI_MISSING]: true
         }));
 
         await askSetupQuestions(
@@ -241,7 +256,8 @@ describe('askSetupQuestions', () => {
         it('proceeds with the second round of questioning', async () => {
           inquirer.prompt
             .mockImplementationOnce(async () => ({
-              [names.GENERATE_NVMRC]: true
+              [names.GENERATE_NVMRC]: true,
+              [names.CI_MISSING]: true
             }))
             .mockImplementationOnce(async () => ({
               [names.NVM_VERSION]: '9.11.1'
@@ -256,7 +272,8 @@ describe('askSetupQuestions', () => {
       describe('and the user does not want a .nvmrc file', () => {
         it('skips the second round of questioning', async () => {
           inquirer.prompt.mockImplementation(async () => ({
-            [names.GENERATE_NVMRC]: false
+            [names.GENERATE_NVMRC]: false,
+            [names.CI_MISSING]: true
           }));
 
           await askSetupQuestions(issues);

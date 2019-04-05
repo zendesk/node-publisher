@@ -86,7 +86,7 @@ async function askSetupQuestions(issues) {
   let questions = generateQuestions(issues);
   const answers = await inquirer.prompt(questions);
 
-  if (!issues.nvmrcExists()) {
+  if (!issues.nvmrcExists() && answers[CI_MISSING] === true) {
     if (
       issues.nvmInstalled() ||
       (!issues.nvmInstalled() && answers[GENERATE_NVMRC] === true)
