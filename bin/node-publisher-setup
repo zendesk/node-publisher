@@ -16,9 +16,9 @@ program
     const issues = searchForIssues();
     const answers = await askSetupQuestions(issues);
 
-    run(issues, answers);
-
-    console.log('🤘 All set up. Now go and rock it!');
+    if (run(issues, answers)) {
+      console.log('🤘 All set up. Now go and rock it!');
+    }
   } catch (e) {
     console.error(`ERROR: ${e.message}`);
     process.exit(1);

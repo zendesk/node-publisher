@@ -101,9 +101,13 @@ async function askSetupQuestions(issues) {
   return answers;
 }
 
+const requiresCustomConfig = answers =>
+  answers[GENERATE_NVMRC] === false || answers[CI_MISSING] === false;
+
 const run = (issues, answers) => {
-  if (answers[GENERATE_NVMRC] === false || answers[CI_MISSING] === false) {
-    return warn(warnings.CUSTOM_CONFIG);
+  if (requiresCustomConfig(answers)) {
+    warn(warnings.CUSTOM_CONFIG);
+    return false;
   }
 
   updatePackageJson(answers);
@@ -122,6 +126,8 @@ const run = (issues, answers) => {
       warn(warnings.NVM_NOT_INSTALLED);
     }
   }
+
+  return true;
 };
 
 module.exports = {
