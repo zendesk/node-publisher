@@ -12,9 +12,9 @@ program
   .parse(process.argv);
 
 (async () => {
-  try {  
+  try {
     const issues = searchForIssues();
-    const answers = askSetupQuestions(issues);
+    const answers = await askSetupQuestions(issues);
 
     run(issues, answers);
 
