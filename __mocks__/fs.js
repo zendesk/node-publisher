@@ -7,6 +7,7 @@ const fs = jest.genMockFromModule('fs');
 let mockFiles = [];
 const __setMockFiles = newMockFiles => {
   mockFiles = [];
+  // eslint-disable-next-line no-unused-vars
   for (const file of newMockFiles) {
     mockFiles.push(normalizePath(file));
   }

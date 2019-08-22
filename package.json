@@ -32,15 +32,20 @@
     "semver": "6.2.0"
   },
   "devDependencies": {
-    "babel-eslint": "8.2.3",
-    "eslint": "4.19.1",
-    "eslint-config-pretty-standard": "1.4.1",
-    "eslint-plugin-jest": "21.17.0",
+    "babel-eslint": "10.0.2",
+    "eslint": "^6.0.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-config-standard": "^14.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jest": "^22.0.0",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.0",
+    "eslint-plugin-standard": "^4.0.0",
     "jest": "24.8.0",
-    "lint-staged": "7.3.0",
+    "lint-staged": "^7.0.0",
     "pre-commit": "1.2.2",
-    "prettier": "1.13.5",
-    "prettier-package-json": "1.6.0"
+    "prettier": "1.18.2",
+    "prettier-package-json": "2.0.1"
   },
   "keywords": [
     "lerna",
