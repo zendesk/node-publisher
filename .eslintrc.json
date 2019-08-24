@@ -1,13 +1,22 @@
 {
-  "extends": [
-    "pretty-standard",
-    "plugin:jest/recommended"
-  ],
+  "env": {
+    "browser": false,
+    "es6": true,
+    "jest/globals": true,
+    "node": true
+  },
+  "extends": ["standard", "prettier", "prettier/standard"],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "babel-eslint",
   "plugins": [
     "jest"
   ],
-  "env": {
-    "jest/globals": true
-  },
-  "parser": "babel-eslint"
+  "rules": {
+    "react/no-unused-prop-types": "off",
+    "react/prop-types": "off",
+    "react/jsx-no-bind": "off"
+  }
 }
