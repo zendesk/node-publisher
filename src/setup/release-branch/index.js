@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const childProcess = require('child_process');
 const { ask, addScript } = require('../utils');
+const { DEFAULT_BRANCH } = require('../../utils/constants');
 
 const GIT_PATH = path.resolve(process.env.PWD, '.git');
 
@@ -18,8 +19,16 @@ const gitBranches = () => {
     match = branchesRegex.exec(rawBranches);
   }
 
-  return branches;
+  return prioritizeDefaultBranch(branches);
 };
+
+const prioritizeDefaultBranch = branches => {
+  const index = branches.indexOf(DEFAULT_BRANCH);
+
+  return index === -1
+    ? branches
+    : branches.splice(index, 1).concat(branches);
+}
 
 const question = () => ({
   type: 'list',

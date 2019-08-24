@@ -35,14 +35,14 @@ describe('gitBranches', () => {
     master
     my-branch-123`;
 
-    it('returns the git branches correctly', () => {
+    it('returns the git branches in the correct order', () => {
       require('child_process').__setReturnValues({
         'git branch': rawBranches
       });
 
       expect(gitBranches()).toEqual([
-        'abc-branch-xyz',
         'master',
+        'abc-branch-xyz',
         'my-branch-123'
       ]);
     });
@@ -53,14 +53,32 @@ describe('gitBranches', () => {
     * master
     my-branch-123`;
 
-    it('returns the git branches correctly', () => {
+    it('returns the git branches in the correct order', () => {
+      require('child_process').__setReturnValues({
+        'git branch': rawBranches
+      });
+
+      expect(gitBranches()).toEqual([
+        'master',
+        'abc-branch-xyz',
+        'my-branch-123'
+      ]);
+    });
+  });
+
+  describe('when master is not in the list of branches', () => {
+    const rawBranches = `abc-branch-xyz
+    * production
+    my-branch-123`;
+
+    it('returns the git branches in the correct order', () => {
       require('child_process').__setReturnValues({
         'git branch': rawBranches
       });
 
       expect(gitBranches()).toEqual([
         'abc-branch-xyz',
-        'master',
+        'production',
         'my-branch-123'
       ]);
     });
