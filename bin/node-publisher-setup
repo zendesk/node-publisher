@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+
+const program = require('commander');
+const setup = require('../src/setup');
+
+program
+  .description('Integrates node-publisher by setting up the release script in `package.json`.')
+  .parse(process.argv);
+
+(async () => {
+  try {
+    await setup();
+    console.log('\n🤘 All set up.');
+  } catch (e) {
+    console.error(`ERROR: ${e.message}`);
+    process.exit(1);
+  }
+})();

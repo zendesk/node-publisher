@@ -16,30 +16,34 @@ This is a configurable release automation tool for node packages inspired by [cr
 # Getting started
 ## 1. Install the package:
 
-```
+```sh
 npm install node-publisher --save-dev
 ```
 
 or
 
-```
+```sh
 yarn add --dev node-publisher
 ```
 
-## 2. Add following scripts to `package.json`
-```js
-// package.json
-// make sure the `travis` command exits with a status that can be read from the terminal with $?
+## 2. Setup
 
-{
-  ...,
-  "scripts": {
-    "travis": "your linting/testing/etc. command here",
-    "release": "node-publisher release",
-  },
-  ...
-}
+Run the setup script:
+
+```sh
+npx node-publisher setup
 ```
+
+The script searches for unmet requirements in your package and attempts to address them. In general, it performs the following actions:
+
+- Checks whether the package root is a git directory.
+- Generates a release script in you `package.json` with a release branch of your choice.
+- Checks whether `NVM` is installed.
+- Generates a `.nvmrc` file if missing.
+- Checks whether a `build` script is defined in `package.json`.
+- Checks whether a CI script is defined in `package.json`.
+
+For more info, read the [Prerequisites section](#prerequisites).
 
 # Usage
 
