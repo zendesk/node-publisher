@@ -18,12 +18,14 @@ const buildReleaseConfig = env => {
     ],
     test: [`${scriptRunner} ${env.testRunner}`],
     build: null,
-    after_publish: ['git push --follow-tags origin master:master'],
+    after_publish: [
+      `git push --follow-tags origin ${env.branch}:${env.branch}`
+    ],
     changelog: [
       `${binPathPrefix}offline-github-changelog > CHANGELOG.md`,
       'git add CHANGELOG.md',
       'git commit --allow-empty -m "Update changelog"',
-      'git push origin master:master'
+      `git push origin ${env.branch}:${env.branch}`
     ]
   };
 
