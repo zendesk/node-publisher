@@ -3,7 +3,6 @@ const { packageJson } = require('../package');
 const {
   VALID_TEST_RUNNERS,
   GIT_PATH,
-  NVM_PATH,
   NVM_CONFIG_PATH,
   PACKAGE_JSON_PATH,
   LERNA_JSON_PATH
@@ -33,8 +32,6 @@ const validateLerna = () => {
 
 const isGitProject = () => fs.existsSync(GIT_PATH);
 
-const isNvmInstalled = () => fs.existsSync(NVM_PATH);
-
 const nvmrcExists = () => fs.existsSync(NVM_CONFIG_PATH);
 
 const hasBuildScript = () => {
@@ -60,7 +57,6 @@ module.exports = {
   validateTestRunner,
   validateLerna,
   isGitProject,
-  isNvmInstalled,
   nvmrcExists,
   hasBuildScript,
   hasCiScript

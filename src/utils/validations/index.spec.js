@@ -1,11 +1,10 @@
 const utils = require('../package');
-const { VALID_TEST_RUNNERS, NVM_PATH } = require('../constants');
+const { VALID_TEST_RUNNERS } = require('../constants');
 const {
   validatePkgRoot,
   validateTestRunner,
   validateLerna,
   isGitProject,
-  isNvmInstalled,
   nvmrcExists,
   hasBuildScript,
   hasCiScript
@@ -98,28 +97,6 @@ describe('isGitProject', () => {
   describe('when .git directory does not exist', () => {
     it('returns false', () => {
       expect(isGitProject()).toBe(false);
-    });
-  });
-});
-
-describe('isNvmInstalled', () => {
-  afterEach(() => {
-    require('fs').__setMockFiles([]);
-  });
-
-  describe('when ~/.nvm directory exists', () => {
-    const MOCKED_FILES = [NVM_PATH];
-
-    it('returns true', () => {
-      require('fs').__setMockFiles(MOCKED_FILES);
-
-      expect(isNvmInstalled()).toBe(true);
-    });
-  });
-
-  describe('when ~/.nvm directory does not exist', () => {
-    it('returns false', () => {
-      expect(isNvmInstalled()).toBe(false);
     });
   });
 });

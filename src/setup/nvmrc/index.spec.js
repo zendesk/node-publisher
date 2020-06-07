@@ -43,14 +43,9 @@ describe('nvmrcStep', () => {
   });
   afterAll(() => require('fs').__setMockFiles([]));
 
-  describe('when NVM is not installed', () => {
-    it('throws an error', async () => {
-      const error = `Your system does not have NVM installed. \
-Install NVM (https://github.com/creationix/nvm#installation) or eject \
-by running \`npx node-publisher eject\` and customize the release process \
-to skip checking the Node version before release.`;
-
-      await expect(nvmrcStep()).rejects.toThrow(error);
+  describe('when .nvmrc file exists', () => {
+    beforeAll(() => {
+      MOCKED_FILES.push('.nvmrc');
     });
 
     it('does not ask for the node version', async () => {
@@ -70,62 +65,30 @@ to skip checking the Node version before release.`;
     });
   });
 
-  describe('when NVM is installed', () => {
+  describe('when .nvmrc file does not exist', () => {
     beforeAll(() => {
       MOCKED_FILES = [NVM_PATH];
     });
 
-    it('does not throw an error', async () => {
-      await expect(nvmrcStep()).resolves.not.toThrow();
+    it('asks for the node version', async () => {
+      try {
+        await nvmrcStep();
+      } catch (_) {
+        expect(utils.ask).not.toHaveBeenCalledTimes(1);
+      }
     });
 
-    describe('and .nvmrc file exists', () => {
-      beforeAll(() => {
-        MOCKED_FILES.push('.nvmrc');
-      });
-
-      it('does not ask for the node version', async () => {
-        try {
-          await nvmrcStep();
-        } catch (_) {
-          expect(utils.ask).not.toHaveBeenCalled();
-        }
-      });
-
-      it('does not generate a .nvmrc file', async () => {
-        try {
-          await nvmrcStep();
-        } catch (_) {
-          expect(fs.writeFileSync).not.toHaveBeenCalled();
-        }
-      });
-    });
-
-    describe('and .nvmrc file does not exist', () => {
-      beforeAll(() => {
-        MOCKED_FILES = [NVM_PATH];
-      });
-
-      it('asks for the node version', async () => {
-        try {
-          await nvmrcStep();
-        } catch (_) {
-          expect(utils.ask).not.toHaveBeenCalledTimes(1);
-        }
-      });
-
-      it('generates a .nvmrc file', async () => {
-        try {
-          await nvmrcStep();
-        } catch (_) {
-          expect(fs.writeFileSync).not.toHaveBeenCalledTimes(1);
-          expect(fs.writeFileSync).not.toHaveBeenCalledWith(
-            NVM_CONFIG_PATH,
-            'v9.11.0',
-            'utf-8'
-          );
-        }
-      });
+    it('generates a .nvmrc file', async () => {
+      try {
+        await nvmrcStep();
+      } catch (_) {
+        expect(fs.writeFileSync).not.toHaveBeenCalledTimes(1);
+        expect(fs.writeFileSync).not.toHaveBeenCalledWith(
+          NVM_CONFIG_PATH,
+          'v9.11.0',
+          'utf-8'
+        );
+      }
     });
   });
 });

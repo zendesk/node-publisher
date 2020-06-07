@@ -8,8 +8,6 @@ const { ask } = require('../utils');
 const NVM_PATH = path.resolve(os.homedir(), '.nvm');
 const NVM_CONFIG_PATH = path.resolve(process.env.PWD, '.nvmrc');
 
-const isNvmInstalled = () => fs.existsSync(NVM_PATH);
-
 const nvmrcExists = () => fs.existsSync(NVM_CONFIG_PATH);
 
 const versionTransformer = (version, _answers, flags) =>
@@ -40,15 +38,6 @@ const generateNvmrcFile = version =>
   );
 
 async function nvmrcStep() {
-  if (!isNvmInstalled()) {
-    throw new Error(
-      `Your system does not have NVM installed. \
-Install NVM (https://github.com/creationix/nvm#installation) or eject \
-by running \`npx node-publisher eject\` and customize the release process \
-to skip checking the Node version before release.`
-    );
-  }
-
   if (nvmrcExists()) {
     return;
   }
