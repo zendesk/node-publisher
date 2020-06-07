@@ -38,7 +38,6 @@ The script searches for unmet requirements in your package and attempts to addre
 
 - Checks whether the package root is a git directory.
 - Generates a release script in you `package.json` with a release branch of your choice.
-- Checks whether `NVM` is installed.
 - Generates a `.nvmrc` file if missing.
 - Checks whether a `build` script is defined in `package.json`.
 - Checks whether a CI script is defined in `package.json`.
@@ -97,6 +96,7 @@ The default release process assumes the following:
 
 - The master branch is called `master`.
 - A `.nvmrc` file is present in the root of your package. In case it is missing, the release fails in its preparation phase.
+- The tool expects the Node version to match the one in `.nvmrc` during the release process. If the expectation is not met, the release fails in its preparation phase.
 - The tool expects the build generation script to be called `build`. Otherwise, the build step is skipped.
 - The tool expects the test triggering script to be called `travis` or `ci`. The reason is that many times the standard `test` scripts are implemented to watch the files for changes to re-trigger the tests. This tool relies on the test script to return eventually, hence the choice of the commonly used CI-friendly script names. The list of accepted script names may be extended in the future. If both `travis` and `ci` scripts are present, `travis` will be preferred.
 
