@@ -1,6 +1,7 @@
 const utils = require('../package');
 const { VALID_TEST_RUNNERS } = require('../constants');
 const {
+  validateNodeVersion,
   validatePkgRoot,
   validateTestRunner,
   validateLerna,
@@ -11,7 +12,40 @@ const {
 } = require('./');
 
 jest.mock('fs');
+jest.mock('child_process');
 jest.mock('../package');
+
+describe('validateNodeVersion', () => {
+  beforeEach(() => {
+    require('fs').__setMockFiles(['.nvmrc']);
+    require('fs').__setReadFileSyncReturnValue('.nvmrc', 'v12.18.0');
+    require('child_process').__permitCommands(['node']);
+  });
+
+  describe('with incorrect Node version', () => {
+    beforeEach(() => {
+      require('child_process').__setReturnValues({
+        'node -v': 'v10.16.0',
+      });
+    });
+
+    it('throws an error', () => {
+      expect(validateNodeVersion).toThrow();
+    });
+  });
+
+  describe('with correct Node version', () => {
+    beforeEach(() => {
+      require('child_process').__setReturnValues({
+        'node -v': 'v12.18.0',
+      });
+    });
+
+    it('does not throw an error', () => {
+      expect(validateNodeVersion).not.toThrow();
+    });
+  });
+});
 
 describe('validatePkgRoot', () => {
   beforeEach(() => {
