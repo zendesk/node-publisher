@@ -1,13 +1,22 @@
 const fs = require('fs');
+const { execSync } = require('child_process');
 const { packageJson } = require('../package');
 const {
   VALID_TEST_RUNNERS,
   GIT_PATH,
-  NVM_PATH,
   NVM_CONFIG_PATH,
   PACKAGE_JSON_PATH,
   LERNA_JSON_PATH
 } = require('../constants');
+
+const validateNodeVersion = () => {
+  const expectedNodeVersion = fs.readFileSync(NVM_CONFIG_PATH).trim();
+  const actualNodeVersion = execSync('node -v', { encoding: 'utf-8' }).trim();
+
+  if (expectedNodeVersion !== actualNodeVersion) {
+    throw new Error(`Expected Node version to be ${expectedNodeVersion} but instead it is ${actualNodeVersion}`);
+  }
+};
 
 const validatePkgRoot = () => {
   if (!fs.existsSync(PACKAGE_JSON_PATH)) {
@@ -33,8 +42,6 @@ const validateLerna = () => {
 
 const isGitProject = () => fs.existsSync(GIT_PATH);
 
-const isNvmInstalled = () => fs.existsSync(NVM_PATH);
-
 const nvmrcExists = () => fs.existsSync(NVM_CONFIG_PATH);
 
 const hasBuildScript = () => {
@@ -56,11 +63,11 @@ const hasCiScript = () => {
 };
 
 module.exports = {
+  validateNodeVersion,
   validatePkgRoot,
   validateTestRunner,
   validateLerna,
   isGitProject,
-  isNvmInstalled,
   nvmrcExists,
   hasBuildScript,
   hasCiScript

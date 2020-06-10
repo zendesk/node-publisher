@@ -11,6 +11,7 @@ const { npmClient, publishClient } = require('./client');
 const { readReleaseConfig, buildReleaseConfig } = require('./config');
 const { packageJson } = require('./package');
 const {
+  validateNodeVersion,
   validatePkgRoot,
   validateTestRunner,
   validateLerna,
@@ -22,6 +23,7 @@ const buildReleaseEnvironment = ({
   configPath = DEFAULT_CONFIG_PATH,
   quiet = false
 }) => {
+  validateNodeVersion();
   validatePkgRoot();
 
   const pkg = packageJson();
@@ -72,7 +74,7 @@ const execCommands = configCommands => {
   if (configCommands) {
     const commands = [].concat(configCommands);
 
-    for (let cmd of commands) {
+    for (const cmd of commands) {
       command.exec(cmd);
     }
   }
