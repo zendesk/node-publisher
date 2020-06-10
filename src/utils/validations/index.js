@@ -10,7 +10,7 @@ const {
 } = require('../constants');
 
 const validateNodeVersion = () => {
-  const expectedNodeVersion = fs.readFileSync(NVM_CONFIG_PATH).trim();
+  const expectedNodeVersion = fs.readFileSync(NVM_CONFIG_PATH, { encoding: 'utf-8' }).trim();
   const actualNodeVersion = execSync('node -v', { encoding: 'utf-8' }).trim();
 
   if (expectedNodeVersion !== actualNodeVersion) {
