@@ -1,3 +1,15 @@
+### v1.5.0 (2020-06-10)
+
+#### Pull requests
+
+- [#41](https://github.com/zendesk/node-publisher/pull/41) Fix reading the contents of .nvmrc ([Attila Večerek](mailto:avecerek@zendesk.com))
+- [#40](https://github.com/zendesk/node-publisher/pull/40) Remove dependency on NVM ([Attila Večerek](mailto:avecerek@zendesk.com))
+
+#### Commits to master
+
+- [v1.5.0](https://github.com/zendesk/node-publisher/commit/af7e542384a5217409c212d3df5d5e8c0ad7a1f3) ([Attila Večerek](mailto:avecerek@zendesk.com))
+- [Update changelog](https://github.com/zendesk/node-publisher/commit/98e4f9ec23b96e240511341d36a62cbd8811e77d) ([Attila Večerek](mailto:avecerek@zendesk.com))
+
 ### v1.4.0 (2019-08-24)
 
 #### Pull requests
