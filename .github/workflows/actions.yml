@@ -3,7 +3,7 @@ on: [push]
 jobs:
   main:
     name: yarn-simple
-    runs-on: [ self-hosted, zendesk-stable]
+    runs-on: ubuntu-latest
     steps:
     - uses: zendesk/checkout@v2
     - uses: zendesk/setup-node@v2.0.0
