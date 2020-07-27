@@ -1,0 +1,19 @@
+name: repo-checks
+on: [push]
+jobs:
+  main:
+    name: yarn-simple
+    runs-on: ubuntu-latest
+    steps:
+    - uses: zendesk/checkout@v2
+    - name: Read .nvmrc
+      run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
+      id: node-read-nvmrc
+    - uses: zendesk/setup-node@v2.0.0
+      with:
+        node-version: "${{ steps.node-read-nvmrc.outputs.NVMRC }}"
+    - name: yarn test
+      run: |
+        yarn install
+        yarn travis
+
