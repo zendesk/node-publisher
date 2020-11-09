@@ -332,6 +332,38 @@
   dependencies:
     any-observable "^0.3.0"
 
+"@transformation/core@^3.6.0":
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/@transformation/core/-/core-3.6.0.tgz#c0ed4a5a3bfc1d806c664cc638c6232219ea3dc4"
+  integrity sha512-nBkWYvy34JRvhv6HpO3r7VCbRKxQQkhfnRZ9ZfK9OBJTdelpspciL9dbSkIiqXXTlBRpP/YIFm/2ArfJwTL0fQ==
+  dependencies:
+    medium "1.0.2"
+    quick-lru "^5.1.0"
+
+"@transformation/ejs@^3.6.0":
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/@transformation/ejs/-/ejs-3.6.0.tgz#635acb2989d11838064bec42d62882a3493f5652"
+  integrity sha512-BiLgYWGypxUxl1eYQJ69E1NUa1FIhkqWZhbhtCjqGiR1ou6Oy3t/uvWaKraGHPmnuCngCX6zWMAPaak/RqFkRA==
+  dependencies:
+    "@transformation/core" "^3.6.0"
+    ejs "3.0.1"
+
+"@transformation/process@^3.6.0":
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/@transformation/process/-/process-3.6.0.tgz#572b24ba98c74629444fba6837d11ce4595bcc24"
+  integrity sha512-SvbaeE/ewuLFyWzX1y0laoklsLYvvNx3NOrjQzA/+HfuUEpYiXIAXY8ODIyXDN5O1p1axiRGbhKGpYta5rto1g==
+  dependencies:
+    "@transformation/core" "^3.6.0"
+    "@transformation/stream" "^3.6.0"
+    medium "1.0.2"
+
+"@transformation/stream@^3.6.0":
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/@transformation/stream/-/stream-3.6.0.tgz#20d6b04befccc0cf2808abf3ab40c30a2cc13afb"
+  integrity sha512-VCbCcDK8b/Sz89KBC4OvUHR4OL4+tYP234mZD7u0Bj6j1Jg+33mumcvstwW9Rae2dWdzio4ersQRrovZEKYoJg==
+  dependencies:
+    "@transformation/core" "^3.6.0"
+
 "@types/babel__core@^7.1.0":
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.2.tgz#608c74f55928033fce18b99b213c16be4b3d114f"
@@ -1247,6 +1279,11 @@ ecc-jsbn@~0.1.1:
   resolved "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.1.tgz#0fc73a9ed5f0d53c38193398523ef7e543777505"
   dependencies:
     jsbn "~0.1.0"
+
+ejs@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/ejs/-/ejs-3.0.1.tgz#30c8f6ee9948502cc32e85c37a3f8b39b5a614a5"
+  integrity sha512-cuIMtJwxvzumSAkqaaoGY/L6Fc/t6YvoP9/VIaK0V/CyqKLEQ8sqODmYfy/cjXEdZ9+OOL8TecbJu+1RsofGDw==
 
 elegant-spinner@^1.0.1:
   version "1.0.1"
@@ -3168,6 +3205,11 @@ markdown-escape@^1.0.2:
   resolved "https://registry.yarnpkg.com/markdown-escape/-/markdown-escape-1.0.2.tgz#7184ae24554c49e84b82fd5648fe2a53d1f91b08"
   integrity sha1-cYSuJFVMSehLgv1WSP4qU9H5Gwg=
 
+medium@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/medium/-/medium-1.0.2.tgz#47bff95ef17913cc0e4a434862171944bbf46818"
+  integrity sha512-QgPG/wAKErFC19cAlQPE72xyJ+nFGbmBabubWCUbf9UXRF8MPVJO9BLU8x0rR+YTsxspSsnOY6lMvYyHd7f7XQ==
+
 meow@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/meow/-/meow-5.0.0.tgz#dfc73d63a9afc714a5e371760eb5c88b91078aa4"
@@ -3547,11 +3589,15 @@ object.values@^1.1.0:
     function-bind "^1.1.1"
     has "^1.0.3"
 
-offline-github-changelog@1.6.1:
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/offline-github-changelog/-/offline-github-changelog-1.6.1.tgz#cf03b13f9bcc31441116abdf3c2e9695b834561b"
-  integrity sha512-gGvK1TRT5vMioiionpvrKbzb7lSzC3T+6fNEXlbDgWP5Y3QzUUspbrsYjqweL9qlSJVfFR5Hs7uBAasrWSjh5w==
+offline-github-changelog@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/offline-github-changelog/-/offline-github-changelog-2.0.0.tgz#ebaf5d74575962cbef4f331e95519e2e7257f374"
+  integrity sha512-STKdbXtOX7BMx3y32rWqHQfPpV0elVLtwZSVUc8ITT3RBMAhkelUbNt7apDdsBohZznzybJKt1FK8Y79hp67mA==
   dependencies:
+    "@transformation/core" "^3.6.0"
+    "@transformation/ejs" "^3.6.0"
+    "@transformation/process" "^3.6.0"
+    "@transformation/stream" "^3.6.0"
     markdown-escape "^1.0.2"
     meow "^5.0.0"
 
@@ -3906,6 +3952,11 @@ quick-lru@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-1.1.0.tgz#4360b17c61136ad38078397ff11416e186dcfbb8"
   integrity sha1-Q2CxfGETatOAeDl/8RQW4Ybc+7g=
+
+quick-lru@^5.1.0:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-5.1.1.tgz#366493e6b3e42a3a6885e2e99d18f80fb7a8c932"
+  integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
 
 rc@^1.2.7:
   version "1.2.8"

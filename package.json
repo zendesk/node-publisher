@@ -28,7 +28,7 @@
     "commander": "2.15.1",
     "inquirer": "6.5.0",
     "js-yaml": "3.13.1",
-    "offline-github-changelog": "1.6.1",
+    "offline-github-changelog": "2.0.0",
     "semver": "6.2.0"
   },
   "devDependencies": {
@@ -53,6 +53,9 @@
     "release-management",
     "yarn"
   ],
+  "engines": {
+    "node": ">=10"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
