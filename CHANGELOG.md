@@ -1,3 +1,16 @@
+### v1.5.1 (2020-11-10)
+
+#### Pull requests
+
+- [#44](https://github.com/zendesk/node-publisher/pull/44) Upgrade offline-github-changelog to the latest version ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+- [#42](https://github.com/zendesk/node-publisher/pull/42) Add GitHub Actions workflows to migrate away from Travis-CI ([Attila Večerek](mailto:avecerek@zendesk.com), [John Shen](mailto:john@everops.com))
+- [#43](https://github.com/zendesk/node-publisher/pull/43) Use node version from .nvmrc in GHA workflow ([Attila Večerek](mailto:avecerek@zendesk.com))
+
+#### Commits to master
+
+- [v1.5.1](https://github.com/zendesk/node-publisher/commit/a22e5db7fd94b25ffc9d6994374a1739ea220107) ([Attila Večerek](mailto:avecerek@zendesk.com))
+- [Update changelog](https://github.com/zendesk/node-publisher/commit/bb4061d1053e22dd155ab7be13e309ad42abbc9a) ([Attila Večerek](mailto:avecerek@zendesk.com))
+
 ### v1.5.0 (2020-06-10)
 
 #### Pull requests
@@ -226,4 +239,3 @@
 - [v0.1.0](https://github.com/zendesk/node-publisher/commit/c868c7d2fa931e9363c4881ebb5b36e55ee3e968) ([Attila Večerek](mailto:avecerek@zendesk.com))
 - [Fixes syntax error in own release](https://github.com/zendesk/node-publisher/commit/ad3f2c4f7ab31fe5080161609e6094eddf5e14ea) ([Attila Večerek](mailto:avecerek@zendesk.com))
 - [Adds empty README](https://github.com/zendesk/node-publisher/commit/6974f0f83969a4ca73c7314efef196e4f5adc8a0) ([Attila Večerek](mailto:avecerek@zendesk.com))
-
