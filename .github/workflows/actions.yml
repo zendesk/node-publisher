@@ -9,7 +9,7 @@ jobs:
     - name: Read .nvmrc
       run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
       id: node-read-nvmrc
-    - uses: zendesk/setup-node@v2.0.0
+    - uses: zendesk/setup-node@v2.1.2
       with:
         node-version: "${{ steps.node-read-nvmrc.outputs.NVMRC }}"
     - name: yarn test
