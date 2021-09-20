@@ -1,3 +1,18 @@
+### v2.0.0 (2021-09-17)
+
+- [v2.0.0](https://github.com/zendesk/node-publisher/commit/0527a926c6af2f080ed13d8b7b9ddd0cb516dd36) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+
+### v1.5.2 (2021-09-20)
+
+#### Pull requests
+
+- [#45](https://github.com/zendesk/node-publisher/pull/45) Upgrade offline-github-changelog to the latest version \(Major\) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+
+#### Commits to master
+
+- [v1.5.2](https://github.com/zendesk/node-publisher/commit/2d6ea7bdbc6de2b69f4a98dba1800ba09a461915) ([Attila Večerek](mailto:avecerek@zendesk.com))
+- [Update changelog](https://github.com/zendesk/node-publisher/commit/ec3f7ffcb8737bfc1d1a6e272f19f5a76f02c467) ([Attila Večerek](mailto:avecerek@zendesk.com))
+
 ### v1.5.1 (2020-11-10)
 
 #### Pull requests
