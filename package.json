@@ -10,7 +10,7 @@
   "bugs": {
     "url": "https://github.com/zendesk/node-publisher/issues"
   },
-  "version": "1.5.2",
+  "version": "1.6.0",
   "main": "src/index.js",
   "bin": {
     "node-publisher": "./bin/node-publisher"
