@@ -332,37 +332,37 @@
   dependencies:
     any-observable "^0.3.0"
 
-"@transformation/core@^4.1.1":
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/@transformation/core/-/core-4.1.1.tgz#852d43bcc4c4c94ef6b61df69900c85824be140e"
-  integrity sha512-D1W2JeqmK7bRA1wWrBghYHN09dxDANLVe/nQh2I/Zm0pGDi8L/RTKoiDtGz9asG39e58MD5gwq1U5C0lRO/oeg==
+"@transformation/core@^5.1.1":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@transformation/core/-/core-5.1.1.tgz#e9814349754e9c8aafadf30ac1c3a5ddf4f1e858"
+  integrity sha512-8domYnuLakJw7XUtBOsSi9uJFyu7PFXtwSIFXtrk5RGwWHwdhYuNMACvq3n1Oc/MiwYE9N8PXwvDNw+nxFXY6Q==
   dependencies:
-    medium "1.1.1"
-    quick-lru "^5.1.0"
+    lru "^3.1.0"
+    medium "1.2.0"
 
-"@transformation/ejs@^4.1.1":
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/@transformation/ejs/-/ejs-4.1.1.tgz#f249f23e7daa3ebd1b40e39f1a56e9bca43536c4"
-  integrity sha512-GPIfO0S4hhPAQ8Q3TmtRZHvKsNed67qApjPp+ZbvIiqq4kMw3RVeZ3FF60Kx/J4YlQcaahL7wjeEVcU7QiZkGA==
+"@transformation/ejs@^5.1.1":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@transformation/ejs/-/ejs-5.1.1.tgz#8fed7000e932cd39f6cd397c28c198b6447ef7ea"
+  integrity sha512-QCzucVHupwLysrl3sbAagKGtwtyUDcjOSw9zl3M1FWt7c0kErj7PYfnTPub9x2O1jGtjRClairVEPuvvPRngIw==
   dependencies:
-    "@transformation/core" "^4.1.1"
+    "@transformation/core" "^5.1.1"
     ejs "3.1.6"
 
-"@transformation/process@^4.1.1":
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/@transformation/process/-/process-4.1.1.tgz#8b04f25547f26865c89b888d6e89af8910d8adf1"
-  integrity sha512-KsviL1n3IzOSAw2RJ/qImQB4frGU72FyhnO4veYNQywCRvKP3QAMlxqVcU5+wW2swzwgTIMq2dXlJnEaHNBNqA==
+"@transformation/process@^5.1.1":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@transformation/process/-/process-5.1.1.tgz#5648caf3b0058de1f778fe50baddc6bcaff994b7"
+  integrity sha512-WXBz83rd/R6RmocZjjpepJf7WqLFjtmRVwHXEj6P9wwTEDeM3WmltqZui/Bs7bzY4OVT/lAuMVUmTDB7yEu1qA==
   dependencies:
-    "@transformation/core" "^4.1.1"
-    "@transformation/stream" "^4.1.1"
-    medium "1.1.1"
+    "@transformation/core" "^5.1.1"
+    "@transformation/stream" "^5.1.1"
+    medium "1.2.0"
 
-"@transformation/stream@^4.1.1":
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/@transformation/stream/-/stream-4.1.1.tgz#ba84ded16c39d718119fd36b3062f27fda92f4b4"
-  integrity sha512-SExD4bAmZ/xmlzKrvhFRsrfmTP2Ydqkpjc+CrwUD7mk2OpFyRD2E2K/BA7UjXckQ+b7qErMqKaaU9KOl5HkapA==
+"@transformation/stream@^5.1.1":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@transformation/stream/-/stream-5.1.1.tgz#4d56190cd4cdb74ec0638043c483859b24fcfb9d"
+  integrity sha512-bxhqeoTnYijS4eiHUuXsuzHQKp1n7RwnXSHv/HN8bfxhs1SyT/7ViEVlJH/TH4CoXHM468gMfA3nD56FK0q7Kw==
   dependencies:
-    "@transformation/core" "^4.1.1"
+    "@transformation/core" "^5.1.1"
 
 "@types/babel__core@^7.1.0":
   version "7.1.2"
@@ -2182,6 +2182,11 @@ inherits@2, inherits@^2.0.3, inherits@~2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
 
+inherits@^2.0.1:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
+  integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
+
 ini@~1.3.0:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
@@ -3232,6 +3237,13 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
+lru@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/lru/-/lru-3.1.0.tgz#ea7fb8546d83733396a13091d76cfeb4c06837d5"
+  integrity sha512-5OUtoiVIGU4VXBOshidmtOsvBIvcQR6FD/RzWSvaeHyxCGB+PCUCu+52lqMfdc0h/2CLvHhZS4TwUmMQrrMbBQ==
+  dependencies:
+    inherits "^2.0.1"
+
 make-dir@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-2.1.0.tgz#5f0310e18b8be898cc07009295a30ae41e91e6f5"
@@ -3275,10 +3287,10 @@ markdown-escape@^1.0.2:
   resolved "https://registry.yarnpkg.com/markdown-escape/-/markdown-escape-1.0.2.tgz#7184ae24554c49e84b82fd5648fe2a53d1f91b08"
   integrity sha1-cYSuJFVMSehLgv1WSP4qU9H5Gwg=
 
-medium@1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/medium/-/medium-1.1.1.tgz#4b857993c824d99ec6988337885d100026bb1d66"
-  integrity sha512-rLvGWrum5CL41HDK90Vuv6NrbvZ81JS744JbY0LVYRVD19F5kEvFxGceVYi7J8vP7+RyxB1K+FYDrWzkLVQDNw==
+medium@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/medium/-/medium-1.2.0.tgz#68ae127b2207f15e15a6feb4bec20bb5caeee985"
+  integrity sha512-qoL5cGyUTeRvzYTbGDoKLdCyV/QdKOKB7Cz+jLGKVMHZ1uRYd7WNIvyQxwSo4CyCShEkqsNkyeurWQHf+O1JNQ==
 
 meow@^9.0.0:
   version "9.0.0"
@@ -3678,15 +3690,15 @@ object.values@^1.1.0:
     function-bind "^1.1.1"
     has "^1.0.3"
 
-offline-github-changelog@2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/offline-github-changelog/-/offline-github-changelog-2.4.0.tgz#215d24ad5a00bef887f69cbc95beab260b9f3ff6"
-  integrity sha512-ve/PeG8yQ2pDUcIBQO1cGDpiadvQOzqSv26GYqMmivHKp/Wlm4LmHKsprqpuMrF5GyM/rPUuVo7e/YHR5TnEvA==
+offline-github-changelog@2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/offline-github-changelog/-/offline-github-changelog-2.5.0.tgz#4008ddd42c45d1196ee942319719d766e5872438"
+  integrity sha512-fYpYbVGcqgetd7mqsgbIKIXqkoQtRXzmFwMgjIA0vBW5ltBD6T74VhVuTMJdwVau6VNX6XVBqk4ayMeOQNH+AA==
   dependencies:
-    "@transformation/core" "^4.1.1"
-    "@transformation/ejs" "^4.1.1"
-    "@transformation/process" "^4.1.1"
-    "@transformation/stream" "^4.1.1"
+    "@transformation/core" "^5.1.1"
+    "@transformation/ejs" "^5.1.1"
+    "@transformation/process" "^5.1.1"
+    "@transformation/stream" "^5.1.1"
     markdown-escape "^1.0.2"
     meow "^9.0.0"
 
@@ -4070,11 +4082,6 @@ quick-lru@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-4.0.1.tgz#5b8878f113a58217848c6482026c73e1ba57727f"
   integrity sha512-ARhCpm70fzdcvNQfPoy49IaanKkTlRWF2JMzqhcJbhSFRZv7nPTvZJdcY7301IPmvW+/p0RgIWnQDLJxifsQ7g==
-
-quick-lru@^5.1.0:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-5.1.1.tgz#366493e6b3e42a3a6885e2e99d18f80fb7a8c932"
-  integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
 
 rc@^1.2.7:
   version "1.2.8"
