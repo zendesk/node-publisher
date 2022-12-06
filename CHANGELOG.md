@@ -1,3 +1,19 @@
+### v3.0.0 (2022-12-06)
+
+#### Pull requests
+
+- [#47](https://github.com/zendesk/node-publisher/pull/47) Upgrade offline-github-changelog \(Major\) ([Sune Simonsen](mailto:sune@we-knowhow.dk), [Sune Simonsen](mailto:sune@we-knowhow.dk))
+- [#46](https://github.com/zendesk/node-publisher/pull/46) Upgrade offline-github-changelog ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+
+#### Commits to master
+
+- [v3.0.0](https://github.com/zendesk/node-publisher/commit/0f45304577e5fed207837410288891468bb75cd5) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+- [Fixed incorrect version in package.json](https://github.com/zendesk/node-publisher/commit/58470f3f6eb3d33794dc9644404c14b78cd08310) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+- [Update changelog](https://github.com/zendesk/node-publisher/commit/44c13daf67e3ddda081c86090817654358500f62) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+- [v1.6.0](https://github.com/zendesk/node-publisher/commit/881d9273d016e37fb742ecb20e5b946f7cf6efd2) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+- [Update changelog](https://github.com/zendesk/node-publisher/commit/bc7bbe4d1c8fcd25942ecf46e300c10eed1bce12) ([Attila Večerek](mailto:avecerek@zendesk.com))
+- [+1 more](https://github.com/zendesk/node-publisher/compare/v2.0.0...v3.0.0)
+
 ### v2.0.0 (2021-09-17)
 
 - [v2.0.0](https://github.com/zendesk/node-publisher/commit/0527a926c6af2f080ed13d8b7b9ddd0cb516dd36) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
@@ -213,7 +229,7 @@
 
 #### Pull requests
 
-- [#6](https://github.com/zendesk/node-publisher/pull/6) Call local package bins directly instead of relying on `yarn` or `npx` ([Attila Večerek](mailto:avecerek@zendesk.com))
+- [#6](https://github.com/zendesk/node-publisher/pull/6) Call local package bins directly instead of relying on \`yarn\` or \`npx\` ([Attila Večerek](mailto:avecerek@zendesk.com))
 
 #### Commits to master
 
@@ -224,7 +240,7 @@
 
 #### Pull requests
 
-- [#5](https://github.com/zendesk/node-publisher/pull/5) Run binaries of local packages either using `yarn` or `npx` ([Attila Večerek](mailto:avecerek@zendesk.com))
+- [#5](https://github.com/zendesk/node-publisher/pull/5) Run binaries of local packages either using \`yarn\` or \`npx\` ([Attila Večerek](mailto:avecerek@zendesk.com))
 
 #### Commits to master
 
@@ -235,7 +251,7 @@
 
 #### Pull requests
 
-- [#4](https://github.com/zendesk/node-publisher/pull/4) Extend `package.json` with a binary entry ([Attila Večerek](mailto:avecerek@zendesk.com))
+- [#4](https://github.com/zendesk/node-publisher/pull/4) Extend \`package.json\` with a binary entry ([Attila Večerek](mailto:avecerek@zendesk.com))
 
 #### Commits to master
 
@@ -246,7 +262,7 @@
 
 #### Pull requests
 
-- [#3](https://github.com/zendesk/node-publisher/pull/3) Fix `offline-github-changelog` command not found error ([Attila Večerek](mailto:avecerek@zendesk.com))
+- [#3](https://github.com/zendesk/node-publisher/pull/3) Fix \`offline-github-changelog\` command not found error ([Attila Večerek](mailto:avecerek@zendesk.com))
 
 #### Commits to master
 
