@@ -26,7 +26,7 @@
   "dependencies": {
     "check-node-version": "3.2.0",
     "commander": "2.15.1",
-    "inquirer": "6.5.0",
+    "inquirer": "6.5.2",
     "js-yaml": "3.13.1",
     "offline-github-changelog": "3.0.1",
     "semver": "6.2.0"
