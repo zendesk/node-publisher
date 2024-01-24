@@ -3722,10 +3722,10 @@ object.values@^1.1.0:
     function-bind "^1.1.1"
     has "^1.0.3"
 
-offline-github-changelog@3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/offline-github-changelog/-/offline-github-changelog-3.0.1.tgz#1b5ea6c5e41692f222ddb26052bf4943dbdfdbd5"
-  integrity sha512-rgvr0lrAXHnBKrqg4wHId8lmBRy3O5QBqAZE7SbpToOqfJ+Lh/zxFwtx++bmnj1y+fjuaTG8l2/sNGShBn/bkQ==
+offline-github-changelog@3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/offline-github-changelog/-/offline-github-changelog-3.0.2.tgz#bfc54b3e7cc695e6c956566a6cfda3f4bf395181"
+  integrity sha512-MYJK+KjVHO53bOxusE8yWBu7GtvTCJatWz73mJQfNThdX2MZGD/SFiugynR7+xZK02IhvVTQxR65ya2uOpPNzg==
   dependencies:
     "@transformation/core" "^7.0.1"
     "@transformation/ejs" "^7.0.1"
