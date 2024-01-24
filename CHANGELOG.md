@@ -1,8 +1,20 @@
+### v3.1.0 (2024-01-24)
+
+#### Pull requests
+
+- [#55](https://github.com/zendesk/node-publisher/pull/55) Upgrade offline-github-changelog to fix duplicate authors ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+- [#54](https://github.com/zendesk/node-publisher/pull/54) Make local installs work with yarn v4 ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+
+#### Commits to master
+
+- [v3.1.0](https://github.com/zendesk/node-publisher/commit/5a1605e05a331211d8533533aba481aa724263ab) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+- [Update changelog](https://github.com/zendesk/node-publisher/commit/f06d6612e0a3fc350ba06b9925c42852e92c32c8) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+
 ### v3.0.0 (2022-12-06)
 
 #### Pull requests
 
-- [#47](https://github.com/zendesk/node-publisher/pull/47) Upgrade offline-github-changelog \(Major\) ([Sune Simonsen](mailto:sune@we-knowhow.dk), [Sune Simonsen](mailto:sune@we-knowhow.dk))
+- [#47](https://github.com/zendesk/node-publisher/pull/47) Upgrade offline-github-changelog \(Major\) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
 - [#46](https://github.com/zendesk/node-publisher/pull/46) Upgrade offline-github-changelog ([Sune Simonsen](mailto:sune@we-knowhow.dk))
 
 #### Commits to master
@@ -33,7 +45,7 @@
 
 #### Pull requests
 
-- [#45](https://github.com/zendesk/node-publisher/pull/45) Upgrade offline-github-changelog to the latest version \(Major\) ([Sune Simonsen](mailto:sune@we-knowhow.dk), [Sune Simonsen](mailto:sune@we-knowhow.dk), [Sune Simonsen](mailto:sune@we-knowhow.dk))
+- [#45](https://github.com/zendesk/node-publisher/pull/45) Upgrade offline-github-changelog to the latest version \(Major\) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
 
 #### Commits to master
 
@@ -45,7 +57,7 @@
 #### Pull requests
 
 - [#44](https://github.com/zendesk/node-publisher/pull/44) Upgrade offline-github-changelog to the latest version ([Sune Simonsen](mailto:sune@we-knowhow.dk))
-- [#42](https://github.com/zendesk/node-publisher/pull/42) Add GitHub Actions workflows to migrate away from Travis-CI ([Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com), [John Shen](mailto:john@everops.com), [John Shen](mailto:john@everops.com))
+- [#42](https://github.com/zendesk/node-publisher/pull/42) Add GitHub Actions workflows to migrate away from Travis-CI ([Attila Večerek](mailto:avecerek@zendesk.com), [John Shen](mailto:john@everops.com))
 - [#43](https://github.com/zendesk/node-publisher/pull/43) Use node version from .nvmrc in GHA workflow ([Attila Večerek](mailto:avecerek@zendesk.com))
 
 #### Commits to master
@@ -58,7 +70,7 @@
 #### Pull requests
 
 - [#41](https://github.com/zendesk/node-publisher/pull/41) Fix reading the contents of .nvmrc ([Attila Večerek](mailto:avecerek@zendesk.com))
-- [#40](https://github.com/zendesk/node-publisher/pull/40) Remove dependency on NVM ([Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com))
+- [#40](https://github.com/zendesk/node-publisher/pull/40) Remove dependency on NVM ([Attila Večerek](mailto:avecerek@zendesk.com))
 
 #### Commits to master
 
@@ -71,11 +83,11 @@
 
 - [#37](https://github.com/zendesk/node-publisher/pull/37) Update jest ([Attila Večerek](mailto:avecerek@zendesk.com))
 - [#36](https://github.com/zendesk/node-publisher/pull/36) Update lint-staged ([Attila Večerek](mailto:avecerek@zendesk.com))
-- [#33](https://github.com/zendesk/node-publisher/pull/33) Update dependencies ([Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com))
+- [#33](https://github.com/zendesk/node-publisher/pull/33) Update dependencies ([Attila Večerek](mailto:avecerek@zendesk.com))
 - [#35](https://github.com/zendesk/node-publisher/pull/35) Fix the generated config for custom release branches ([Attila Večerek](mailto:avecerek@zendesk.com))
 - [#34](https://github.com/zendesk/node-publisher/pull/34) Order branches during the release branch selection setup process ([Attila Večerek](mailto:avecerek@zendesk.com))
-- [#32](https://github.com/zendesk/node-publisher/pull/32) Implement a setup script, take 2 ([Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com))
-- [#31](https://github.com/zendesk/node-publisher/pull/31) Address security alerts ([Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com))
+- [#32](https://github.com/zendesk/node-publisher/pull/32) Implement a setup script, take 2 ([Attila Večerek](mailto:avecerek@zendesk.com))
+- [#31](https://github.com/zendesk/node-publisher/pull/31) Address security alerts ([Attila Večerek](mailto:avecerek@zendesk.com))
 
 #### Commits to master
 
@@ -87,7 +99,7 @@
 #### Pull requests
 
 - [#30](https://github.com/zendesk/node-publisher/pull/30) Fix the build step not committing the changes ([Attila Večerek](mailto:avecerek@zendesk.com))
-- [#28](https://github.com/zendesk/node-publisher/pull/28) Add --branch release param ([Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com))
+- [#28](https://github.com/zendesk/node-publisher/pull/28) Add --branch release param ([Attila Večerek](mailto:avecerek@zendesk.com))
 
 #### Commits to master
 
@@ -98,7 +110,7 @@
 
 #### Pull requests
 
-- [#26](https://github.com/zendesk/node-publisher/pull/26) Support multiple release configurations ([Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com))
+- [#26](https://github.com/zendesk/node-publisher/pull/26) Support multiple release configurations ([Attila Večerek](mailto:avecerek@zendesk.com))
 
 #### Commits to master
 
@@ -109,7 +121,7 @@
 
 #### Pull requests
 
-- [#27](https://github.com/zendesk/node-publisher/pull/27) Remove version constraints and add prerelease option ([Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com))
+- [#27](https://github.com/zendesk/node-publisher/pull/27) Remove version constraints and add prerelease option ([Attila Večerek](mailto:avecerek@zendesk.com))
 
 #### Commits to master
 
@@ -120,7 +132,7 @@
 
 #### Pull requests
 
-- [#24](https://github.com/zendesk/node-publisher/pull/24) Add details to package.json + minor adjustments ([Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com))
+- [#24](https://github.com/zendesk/node-publisher/pull/24) Add details to package.json + minor adjustments ([Attila Večerek](mailto:avecerek@zendesk.com))
 - [#23](https://github.com/zendesk/node-publisher/pull/23) Fix small typo in readme ([Marc Høegh](mailto:Anifacted@users.noreply.github.com))
 
 #### Commits to master
@@ -134,8 +146,8 @@
 
 - [#22](https://github.com/zendesk/node-publisher/pull/22) Add publish config to be able to release with yarn again ([Attila Večerek](mailto:avecerek@zendesk.com))
 - [#21](https://github.com/zendesk/node-publisher/pull/21) Rename package and adds licenses field to package.json ([Attila Večerek](mailto:avecerek@zendesk.com))
-- [#20](https://github.com/zendesk/node-publisher/pull/20) Remove private repo configuration ([Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com))
-- [#18](https://github.com/zendesk/node-publisher/pull/18) Update README ([Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com))
+- [#20](https://github.com/zendesk/node-publisher/pull/20) Remove private repo configuration ([Attila Večerek](mailto:avecerek@zendesk.com))
+- [#18](https://github.com/zendesk/node-publisher/pull/18) Update README ([Attila Večerek](mailto:avecerek@zendesk.com))
 
 #### Commits to master
 
@@ -180,7 +192,7 @@
 
 #### Pull requests
 
-- [#14](https://github.com/zendesk/node-publisher/pull/14) Add test runner whitelist ([Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com))
+- [#14](https://github.com/zendesk/node-publisher/pull/14) Add test runner whitelist ([Attila Večerek](mailto:avecerek@zendesk.com))
 
 #### Commits to master
 
@@ -273,7 +285,7 @@
 
 #### Pull requests
 
-- [#2](https://github.com/zendesk/node-publisher/pull/2) Fix rollback and own release ([Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com), [Attila Večerek](mailto:avecerek@zendesk.com))
+- [#2](https://github.com/zendesk/node-publisher/pull/2) Fix rollback and own release ([Attila Večerek](mailto:avecerek@zendesk.com))
 - [#1](https://github.com/zendesk/node-publisher/pull/1) Initial PR ([Attila Večerek](mailto:avecerek@zendesk.com))
 
 #### Commits to master
