@@ -12,9 +12,7 @@
   },
   "version": "3.0.0",
   "main": "src/index.js",
-  "bin": {
-    "node-publisher": "./bin/node-publisher"
-  },
+  "bin": "./bin/node-publisher",
   "scripts": {
     "coverage": "jest --coverage",
     "lint": "eslint ./**/*.js",
@@ -77,5 +75,6 @@
       "git add"
     ]
   },
+  "packageManager": "yarn@1.22.21",
   "pre-commit": "lint-staged"
 }
