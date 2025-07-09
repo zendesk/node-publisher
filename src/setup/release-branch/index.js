@@ -25,10 +25,8 @@ const gitBranches = () => {
 const prioritizeDefaultBranch = branches => {
   const index = branches.indexOf(DEFAULT_BRANCH);
 
-  return index === -1
-    ? branches
-    : branches.splice(index, 1).concat(branches);
-}
+  return index === -1 ? branches : branches.splice(index, 1).concat(branches);
+};
 
 const question = () => ({
   type: 'list',
@@ -49,7 +47,7 @@ async function releaseBranchStep() {
   const releaseCommand =
     releaseBranch === 'master'
       ? 'node-publisher release'
-      : `node-publisher release --default-branch=${releaseBranch}`;
+      : `node-publisher release --branch=${releaseBranch}`;
 
   addScript('release', releaseCommand);
 }
