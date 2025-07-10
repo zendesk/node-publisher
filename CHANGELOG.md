@@ -1,3 +1,16 @@
+### v3.2.0 (2025-07-10)
+
+#### Pull requests
+
+- [#61](https://github.com/zendesk/node-publisher/pull/61) Update node version ([Daria Radu](mailto:daria.radu@zendesk.com), [Sune Simonsen](mailto:sune@we-knowhow.dk))
+- [#60](https://github.com/zendesk/node-publisher/pull/60) Run different publish command based on yarn version ([Daria Radu](mailto:daria.radu@zendesk.com))
+- [#59](https://github.com/zendesk/node-publisher/pull/59) Fix custom release branch setup to the correct parameter ([Daria Radu](mailto:daria.radu@zendesk.com))
+
+#### Commits to master
+
+- [v3.2.0](https://github.com/zendesk/node-publisher/commit/989ecec13e467b13217ff482f422bafe61e61dbf) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+- [Update changelog](https://github.com/zendesk/node-publisher/commit/e19ff455cae89cbd2796c00699ca4debaded6fac) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+
 ### v3.1.0 (2024-01-24)
 
 #### Pull requests
