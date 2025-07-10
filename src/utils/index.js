@@ -1,22 +1,22 @@
-const path = require('path');
-const fs = require('fs');
-const command = require('./command');
+const path = require("path");
+const fs = require("fs");
+const command = require("./command");
 const {
   DEFAULT_CONFIG_PATH,
   DEFAULT_BRANCH,
   VALID_TEST_RUNNERS,
   DEFAULT_TEST_RUNNER
-} = require('./constants');
-const { npmClient, publishClient } = require('./client');
-const { readReleaseConfig, buildReleaseConfig } = require('./config');
-const { packageJson } = require('./package');
+} = require("./constants");
+const { npmClient, publishClient } = require("./client");
+const { readReleaseConfig, buildReleaseConfig } = require("./config");
+const { packageJson } = require("./package");
 const {
   validateNodeVersion,
   validatePkgRoot,
   validateTestRunner,
   validateLerna,
   hasBuildScript
-} = require('./validations');
+} = require("./validations");
 
 const buildReleaseEnvironment = ({
   branch = DEFAULT_BRANCH,
@@ -40,7 +40,7 @@ const buildReleaseEnvironment = ({
   }
 
   const client = publishClient();
-  if (client === 'lerna') {
+  if (client === "lerna") {
     validateLerna();
   }
 
@@ -60,7 +60,7 @@ const loadReleaseConfig = env => {
     : path.resolve(process.env.PWD, env.configPath);
 
   if (fs.existsSync(configPath)) {
-    return readReleaseConfig(fs.readFileSync(configPath, 'utf8'));
+    return readReleaseConfig(fs.readFileSync(configPath, "utf8"));
   } else if (env.configPath !== DEFAULT_CONFIG_PATH) {
     throw new Error(
       `The configuration file \`${env.configPath}\` does not exist.`
@@ -74,22 +74,22 @@ const execCommands = configCommands => {
   if (configCommands) {
     const commands = [].concat(configCommands);
 
-    commands.forEach(cmd => {
+    for (const cmd of commands) {
       command.exec(cmd);
-    });
+    }
   }
 };
 
 const currentCommitId = () =>
   command
-    .exec('git rev-parse HEAD', {})
+    .exec("git rev-parse HEAD", {})
     .toString()
     .trim();
 
 const rollbackCommit = commitId => command.exec(`git reset --hard ${commitId}`);
 
 const versionTransformer = (version, _answers, flags) =>
-  flags.isFinal && version[0] !== 'v' ? `v${version}` : version;
+  flags.isFinal && version[0] !== "v" ? `v${version}` : version;
 
 module.exports = {
   buildReleaseEnvironment,
