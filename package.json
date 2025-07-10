@@ -1,5 +1,6 @@
 {
   "name": "node-publisher",
+  "version": "3.1.0",
   "description": "A configurable release automation tool inspired by create-react-app and Travis CI.",
   "author": "Attila Večerek <avecerek@zendesk.com>",
   "homepage": "https://github.com/zendesk/node-publisher#readme",
@@ -10,12 +11,11 @@
   "bugs": {
     "url": "https://github.com/zendesk/node-publisher/issues"
   },
-  "version": "3.1.0",
   "main": "src/index.js",
   "bin": "./bin/node-publisher",
   "scripts": {
     "coverage": "jest --coverage",
-    "lint": "eslint ./**/*.js",
+    "lint": "eslint src/**/*.js bin/**",
     "lint-staged": "lint-staged",
     "release": "./bin/node-publisher release",
     "test": "jest",
@@ -26,8 +26,8 @@
     "commander": "2.15.1",
     "inquirer": "6.5.0",
     "js-yaml": "3.13.1",
-    "offline-github-changelog": "3.0.2",
-    "semver": "6.2.0"
+    "offline-github-changelog": "3.1.0",
+    "semver": "7.7.2"
   },
   "devDependencies": {
     "babel-eslint": "10.0.2",
@@ -35,15 +35,15 @@
     "eslint-config-prettier": "^6.0.0",
     "eslint-config-standard": "^14.0.0",
     "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-jest": "^22.0.0",
+    "eslint-plugin-jest": "^23.20.0",
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-promise": "^4.2.0",
     "eslint-plugin-standard": "^4.0.0",
-    "jest": "24.9.0",
+    "jest": "^27.0.0",
     "lint-staged": "^9.0.0",
     "pre-commit": "1.2.2",
     "prettier": "1.18.2",
-    "prettier-package-json": "2.0.1"
+    "prettier-package-json": "2.8.0"
   },
   "keywords": [
     "lerna",

@@ -74,9 +74,9 @@ const execCommands = configCommands => {
   if (configCommands) {
     const commands = [].concat(configCommands);
 
-    for (const cmd of commands) {
+    commands.forEach(cmd => {
       command.exec(cmd);
-    }
+    });
   }
 };
 
