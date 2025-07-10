@@ -52,7 +52,7 @@
     "yarn"
   ],
   "engines": {
-    "node": ">=14"
+    "node": ">=20"
   },
   "publishConfig": {
     "access": "public",
