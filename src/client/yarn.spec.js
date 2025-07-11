@@ -62,9 +62,8 @@ describe('publish', () => {
 
       it('publishes new version using yarn v2+ syntax', () => {
         expect(() => publish(options)).not.toThrow();
-        expect(options.execCommand.mock.calls[0][0]).toBe(
-          'yarn npm publish --tag patch'
-        );
+        expect(options.execCommand.mock.calls[0][0]).toBe('yarn version patch');
+        expect(options.execCommand.mock.calls[1][0]).toBe('yarn npm publish');
       });
     });
 
@@ -77,9 +76,8 @@ describe('publish', () => {
 
       it('publishes new version using yarn v2+ syntax', () => {
         expect(() => publish(options)).not.toThrow();
-        expect(options.execCommand.mock.calls[0][0]).toBe(
-          'yarn npm publish --tag major'
-        );
+        expect(options.execCommand.mock.calls[0][0]).toBe('yarn version major');
+        expect(options.execCommand.mock.calls[1][0]).toBe('yarn npm publish');
       });
     });
   });

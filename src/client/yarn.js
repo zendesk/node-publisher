@@ -18,7 +18,8 @@ const isYarnV2OrHigher = () => {
 
 const publish = ({ nextVersion, execCommand }) => {
   if (isYarnV2OrHigher()) {
-    execCommand(`yarn npm publish --tag ${nextVersion}`);
+    execCommand(`yarn version ${nextVersion}`);
+    execCommand(`yarn npm publish`);
   } else {
     execCommand(`yarn publish --new-version ${nextVersion}`);
   }
