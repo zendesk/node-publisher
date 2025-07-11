@@ -1,3 +1,14 @@
+### v3.2.1 (2025-07-11)
+
+#### Pull requests
+
+- [#62](https://github.com/zendesk/node-publisher/pull/62) Fix yarn v2+ versioning ([Daria Radu](mailto:daria.radu@zendesk.com))
+
+#### Commits to master
+
+- [v3.2.1](https://github.com/zendesk/node-publisher/commit/1f0f25c7aec1e507d7a9c4fab6252ce00588e073) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+- [Update changelog](https://github.com/zendesk/node-publisher/commit/b444d894d713c2f4572b6b5211c09d8ff77cedac) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+
 ### v3.2.0 (2025-07-10)
 
 #### Pull requests
