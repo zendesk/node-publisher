@@ -3,9 +3,11 @@ const yaml = require('js-yaml');
 const readReleaseConfig = str => yaml.safeLoad(str);
 
 const buildReleaseConfig = env => {
-  const client = env.npmClient;
+  const client = env.npmClient === 'yarn-berry' ? 'yarn' : env.npmClient;
   const binPathPrefix = './node_modules/.bin/';
-  const scriptRunner = client === 'yarn' ? 'yarn' : 'npm run';
+  const scriptRunner = ['yarn', 'yarn-berry'].includes(client)
+    ? 'yarn'
+    : 'npm run';
 
   const config = {
     rollback: true,
