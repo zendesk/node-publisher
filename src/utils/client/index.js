@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { LERNA_JSON_PATH } = require('../constants');
+const { isYarnBerry } = require('../yarn');
 
 const npmClient = () => {
   const clientMap = {
@@ -13,6 +14,10 @@ const npmClient = () => {
     if (fs.existsSync(path.resolve(process.env.PWD, file))) {
       client = clientMap[file];
     }
+  }
+
+  if (client === 'yarn' && isYarnBerry()) {
+    client = 'yarn-berry';
   }
 
   if (!client) {

@@ -1,10 +1,15 @@
 const { npmClient, publishClient } = require('./');
+const { isYarnBerry } = require('../yarn');
 
 jest.mock('fs');
+
+jest.mock('../yarn');
 
 describe('npmClient', () => {
   beforeEach(() => {
     require('fs').__setMockFiles([]);
+
+    isYarnBerry.mockImplementation(() => false);
   });
 
   describe('when client cannot be detected', () => {
@@ -25,6 +30,32 @@ describe('npmClient', () => {
 
       expect(npmClient).not.toThrow();
       expect(npmClient()).toBe('npm');
+    });
+  });
+
+  describe('when yarn.lock found', () => {
+    const MOCKED_FILES = ['yarn.lock'];
+
+    describe('and yarn version is 1', () => {
+      it('returns yarn', () => {
+        require('fs').__setMockFiles(MOCKED_FILES);
+
+        expect(npmClient).not.toThrow();
+        expect(npmClient()).toBe('yarn');
+      });
+    });
+
+    describe('and yarn version is 4', () => {
+      beforeEach(() => {
+        isYarnBerry.mockImplementation(() => true);
+      });
+
+      it('returns yarn berry', () => {
+        require('fs').__setMockFiles(MOCKED_FILES);
+
+        expect(npmClient).not.toThrow();
+        expect(npmClient()).toBe('yarn-berry');
+      });
     });
   });
 
