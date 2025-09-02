@@ -12,6 +12,7 @@ describe('publish', () => {
     const options = {
       nextVersion: 'patch',
       preid: undefined,
+      env: { branch: 'main' },
       execCommand: jest.fn()
     };
 
@@ -44,7 +45,7 @@ describe('publish', () => {
 
       expect(options.execCommand).toHaveBeenNthCalledWith(
         5,
-        'git push origin master --follow-tags'
+        'git push origin main --follow-tags'
       );
 
       expect(options.execCommand).toHaveBeenNthCalledWith(
@@ -58,6 +59,7 @@ describe('publish', () => {
     const options = {
       nextVersion: 'major',
       preid: 'alpha',
+      env: { main: 'master' },
       execCommand: jest.fn()
     };
 
