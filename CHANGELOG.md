@@ -1,3 +1,14 @@
+### v3.3.0 (2025-09-03)
+
+#### Pull requests
+
+- [#63](https://github.com/zendesk/node-publisher/pull/63) Yarn berry ([Albert Fernández](mailto:afernandez@zendesk.com))
+
+#### Commits to master
+
+- [v3.3.0](https://github.com/zendesk/node-publisher/commit/66a2c7bc585fefea462900fb182b15348783be41) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+- [Update changelog](https://github.com/zendesk/node-publisher/commit/54a067bd971bd8a9ffe749f4058d9fe89288f200) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+
 ### v3.2.1 (2025-07-11)
 
 #### Pull requests
