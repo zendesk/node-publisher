@@ -1,3 +1,17 @@
+### v3.4.0 (2026-02-13)
+
+#### Pull requests
+
+- [#67](https://github.com/zendesk/node-publisher/pull/67) Fix missing method ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+- [#66](https://github.com/zendesk/node-publisher/pull/66) Fix dependency security vulnerabilities ([Daria Radu](mailto:daria.radu@zendesk.com), [Sune Simonsen](mailto:sune@we-knowhow.dk))
+
+#### Commits to master
+
+- [v3.4.0](https://github.com/zendesk/node-publisher/commit/b8dd1babc44b361d1362ccfef4df1f67c8b21738) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+- [Small readme tweaks](https://github.com/zendesk/node-publisher/commit/76d1195a305dc59d5d69f0b5d2b68aa86fab1ca8) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+- [Add CODEOWNERS file with team @zendesk\/guide \(\#65\)](https://github.com/zendesk/node-publisher/commit/641ae99cec9acc2857984ea986b31975d6c43f29) ([zd-svc-gha-ci-platform](mailto:zd-svc-gha-ci-platform@zendesk.com))
+- [Update changelog](https://github.com/zendesk/node-publisher/commit/d293180673485aa8cb4e97cef18b1d78c9034841) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+
 ### v3.3.0 (2025-09-03)
 
 #### Pull requests
