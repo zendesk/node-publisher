@@ -1,6 +1,6 @@
 {
   "name": "node-publisher",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "description": "A configurable release automation tool inspired by create-react-app and Travis CI.",
   "author": "Attila Večerek <avecerek@zendesk.com>",
   "homepage": "https://github.com/zendesk/node-publisher#readme",
