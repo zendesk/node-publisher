@@ -1,6 +1,6 @@
 const yaml = require('js-yaml');
 
-const readReleaseConfig = str => yaml.safeLoad(str);
+const readReleaseConfig = str => yaml.load(str);
 
 const buildReleaseConfig = env => {
   const client = env.npmClient === 'yarn-berry' ? 'yarn' : env.npmClient;
