@@ -14,6 +14,7 @@ This is a configurable release automation tool for node packages inspired by [cr
 ![repo-checks](https://github.com/zendesk/node-publisher/workflows/repo-checks/badge.svg)
 
 # Getting started
+
 ## 1. Install the package:
 
 ```sh
@@ -50,7 +51,7 @@ For more info, read the [Prerequisites section](#prerequisites).
 npm run release -- <version>
 ```
 
-or 
+or
 
 ```sh
 yarn release <version>
@@ -127,6 +128,7 @@ The lifecycle hooks can be redefined in the form of a configurable YAML file. Ad
 * `rollback [Boolean]` - rolls back to the latest commit fetched after the `prepare` step. The rollback itself happens in the `after_failure` step and only if this flag is set to `true`.
 
 ## Default configuration
+
 The exact configuration depends on the npm client being used and the contents of your `package.json` file. In case you use yarn, the default configuration will look like this:
 
 ```yaml
@@ -165,11 +167,13 @@ changelog:
 # Development
 
 ## Install packages
+
 ```sh
 yarn
 ```
 
 ## Release a new version
+
 ```sh
 yarn release <version>
 ```
@@ -186,6 +190,7 @@ Contributing to `node-publisher` is fairly easy, as long as the following steps 
 6. Mention one or more of the maintainers to get the Pull Request approved and merged
 
 ## Maintainers
+
 - Attila Večerek ([@vecerek](https://github.com/vecerek/))
 - Sune Simonsen ([@sunesimonsen](https://github.com/sunesimonsen/))
 
