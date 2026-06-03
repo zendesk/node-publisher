@@ -22,8 +22,12 @@
     "travis": "yarn lint && yarn test"
   },
   "resolutions": {
-    "tmp": "^0.2.4",
-    "form-data": "^3.0.4"
+    "tmp": "^0.2.6",
+    "form-data": "^3.0.4",
+    "lodash": "^4.18.1",
+    "flatted": "^3.4.2",
+    "filelist/**/minimatch": "^5.1.9",
+    "brace-expansion": "^1.1.13"
   },
   "dependencies": {
     "check-node-version": "3.2.0",
