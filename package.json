@@ -1,6 +1,6 @@
 {
   "name": "node-publisher",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "description": "A configurable release automation tool inspired by create-react-app and Travis CI.",
   "author": "Attila Večerek <avecerek@zendesk.com>",
   "homepage": "https://github.com/zendesk/node-publisher#readme",
@@ -14,6 +14,7 @@
   "main": "src/index.js",
   "bin": "./bin/node-publisher",
   "scripts": {
+    "build": "node src/index.js",
     "coverage": "jest --coverage",
     "lint": "eslint src/**/*.js bin/**",
     "lint-staged": "lint-staged",
@@ -26,7 +27,7 @@
     "form-data": "^3.0.5",
     "lodash": "^4.18.1",
     "flatted": "^3.4.2",
-    "filelist/**/minimatch": "^5.1.9",
+    "filelist/minimatch": "^5.1.9",
     "brace-expansion": "^1.1.13"
   },
   "dependencies": {
@@ -83,6 +84,6 @@
       "git add"
     ]
   },
-  "packageManager": "yarn@1.22.21",
+  "packageManager": "yarn@4.17.1",
   "pre-commit": "lint-staged"
 }

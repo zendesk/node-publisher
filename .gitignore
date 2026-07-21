@@ -2,4 +2,8 @@ node_modules/
 coverage/
 .DS_Store
 yarn-error.log
-.yarn/install-state.gz
+
+# Yarn berry — keep .yarn/releases committed, ignore everything else
+.yarn/*
+!.yarn/releases
+.pnp.*

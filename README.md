@@ -174,9 +174,17 @@ yarn
 
 ## Release a new version
 
-```sh
-yarn release <version>
-```
+`node-publisher` is published to npm from CI via the [`npm publish`](.github/workflows/npm-publish.yml) GitHub Actions workflow — no local npm login is required.
+
+1. **Bump the version in a PR.** Run `yarn version <patch|minor|major>` (this edits the `version` field in `package.json`; it does not create a commit or tag), or edit the field by hand. Commit, open a PR, and merge to `master`.
+2. **Publish.** Go to **Actions → npm publish → Run workflow** and run it against `master`. This calls the shared [`zendesk/gw`](https://github.com/zendesk/gw/blob/main/.github/workflows/npm-publication.yml) reusable workflow, which builds the package and runs `yarn npm publish` to the Zendesk npmjs org.
+
+> **Note:** publishing is restricted to the required reviewers configured on the `npm-publish` GitHub environment. Only those admins can approve and run a release.
+
+**Prerequisites:**
+
+- The `npm-publish` GitHub environment must exist on the repository with the `NPM_TOKEN` and `NPM_TOTP_DEVICE` secrets configured (managed via #ask-packaging).
+- The `version` in `package.json` must be higher than the latest version already on [npmjs.com](https://www.npmjs.com/package/node-publisher) — npm rejects re-publishing an existing version.
 
 # Contributing
 
