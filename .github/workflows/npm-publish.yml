@@ -2,6 +2,10 @@ name: npm publish
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  packages: read
+
 jobs:
   call-workflow:
     uses: zendesk/gw/.github/workflows/npm-publication.yml@main
