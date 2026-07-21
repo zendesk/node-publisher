@@ -14,7 +14,7 @@
   "main": "src/index.js",
   "bin": "./bin/node-publisher",
   "scripts": {
-    "build": "node src/index.js",
+    "build": "echo 'no build step required'",
     "coverage": "jest --coverage",
     "lint": "eslint src/**/*.js bin/**",
     "lint-staged": "lint-staged",
