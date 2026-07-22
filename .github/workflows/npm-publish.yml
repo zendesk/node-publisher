@@ -3,14 +3,20 @@ on:
   workflow_dispatch:
 
 permissions:
+  id-token: write
   contents: read
-  packages: read
 
 jobs:
-  call-workflow:
-    uses: zendesk/gw/.github/workflows/npm-publication.yml@main
-    with:
-      node_version: '22'
-    secrets:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      NPM_TOTP_DEVICE: ${{ secrets.NPM_TOTP_DEVICE }}
+  publish:
+    runs-on: ubuntu-latest
+    environment: npm-publish
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          registry-url: https://registry.npmjs.org
+      - run: corepack enable
+      - run: yarn install --immutable
+      - run: yarn build
+      - run: yarn npm publish
