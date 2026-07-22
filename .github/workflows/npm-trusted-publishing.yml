@@ -1,0 +1,16 @@
+name: npm trusted publishing
+on:
+  workflow_dispatch:
+
+jobs:
+  bootstrap:
+    uses: zendesk/gw/.github/workflows/npm-trusted-publication.yml@main
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      NPM_TOTP_DEVICE: ${{ secrets.NPM_TOTP_DEVICE }}
+    with:
+      package-name: node-publisher
+      package-json-file-path: package.json
+      publish-workflow: npm-publish.yml
+      repository: ${{ github.repository }}
+      github-environment: npm-publish

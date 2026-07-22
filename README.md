@@ -174,17 +174,21 @@ yarn
 
 ## Release a new version
 
-`node-publisher` is published to npm from CI via the [`npm publish`](.github/workflows/npm-publish.yml) GitHub Actions workflow — no local npm login is required.
+`node-publisher` is published to npm from CI via the [`npm publish`](.github/workflows/npm-publish.yml) GitHub Actions workflow. Publishing is **tokenless** — it uses [npm trusted publishing](https://docs.npmjs.com/trusted-publishers) over GitHub OIDC, so no npm token or local npm login is required.
 
 1. **Bump the version in a PR.** Run `yarn version <patch|minor|major>` (this edits the `version` field in `package.json`; it does not create a commit or tag), or edit the field by hand. Commit, open a PR, and merge to `master`.
-2. **Publish.** Go to **Actions → npm publish → Run workflow** and run it against `master`. This calls the shared [`zendesk/gw`](https://github.com/zendesk/gw/blob/main/.github/workflows/npm-publication.yml) reusable workflow, which builds the package and runs `yarn npm publish` to the Zendesk npmjs org.
+2. **Publish.** Go to **Actions → npm publish → Run workflow** and run it against `master`. The workflow builds the package and runs `yarn npm publish` to the Zendesk npmjs org, authenticating via OIDC.
 
 > **Note:** publishing is restricted to the required reviewers configured on the `npm-publish` GitHub environment. Only those admins can approve and run a release.
 
 **Prerequisites:**
 
-- The `npm-publish` GitHub environment must exist on the repository with the `NPM_TOKEN` and `NPM_TOTP_DEVICE` secrets configured (managed via #ask-packaging).
+- The `npm-publish` GitHub environment must exist on the repository (managed via #ask-packaging). The `NPM_TOKEN` and `NPM_TOTP_DEVICE` secrets are only needed for the one-time trusted-publisher setup below, not for regular publishes.
 - The `version` in `package.json` must be higher than the latest version already on [npmjs.com](https://www.npmjs.com/package/node-publisher) — npm rejects re-publishing an existing version.
+
+**First-time setup (once per package):**
+
+Before the first OIDC publish, the trusted publisher must be registered on npm. After the `npm-publish` environment and its `NPM_TOKEN`/`NPM_TOTP_DEVICE` secrets exist, run **Actions → npm trusted publishing → Run workflow** against `master` once. This registers this repository, the `npm-publish.yml` workflow, and the `npm-publish` environment with npm. After it succeeds, all releases publish tokenlessly via step 2 above.
 
 # Contributing
 
