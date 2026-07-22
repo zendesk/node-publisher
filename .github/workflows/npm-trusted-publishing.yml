@@ -2,6 +2,9 @@ name: npm trusted publishing
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   bootstrap:
     uses: zendesk/gw/.github/workflows/npm-trusted-publication.yml@main
