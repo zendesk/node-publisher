@@ -2,9 +2,9 @@ const fs = require('fs');
 const path = require('path');
 const childProcess = require('child_process');
 const { ask, addScript } = require('../utils');
-const { DEFAULT_BRANCH } = require('../../utils/constants');
 
 const GIT_PATH = path.resolve(process.env.PWD, '.git');
+const DEFAULT_BRANCHES = ['main', 'master'];
 
 const isGitRepo = () => fs.existsSync(GIT_PATH);
 
@@ -23,9 +23,17 @@ const gitBranches = () => {
 };
 
 const prioritizeDefaultBranch = branches => {
-  const index = branches.indexOf(DEFAULT_BRANCH);
+  const defaultBranch = DEFAULT_BRANCHES.find(branch =>
+    branches.includes(branch)
+  );
 
-  return index === -1 ? branches : branches.splice(index, 1).concat(branches);
+  if (!defaultBranch) {
+    return branches;
+  }
+
+  return [defaultBranch].concat(
+    branches.filter(branch => branch !== defaultBranch)
+  );
 };
 
 const question = () => ({
@@ -44,10 +52,7 @@ async function releaseBranchStep() {
   }
 
   const releaseBranch = await ask(question());
-  const releaseCommand =
-    releaseBranch === 'master'
-      ? 'node-publisher release'
-      : `node-publisher release --branch=${releaseBranch}`;
+  const releaseCommand = `node-publisher release --branch=${releaseBranch}`;
 
   addScript('release', releaseCommand);
 }

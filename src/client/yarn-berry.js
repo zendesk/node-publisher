@@ -1,4 +1,5 @@
 const { packageJson } = require('../utils/package');
+const { getDefaultBranch } = require('../utils');
 
 const version = str => {
   if (str[0] === 'v') {
@@ -16,7 +17,9 @@ const publish = ({ nextVersion, execCommand, env }) => {
   execCommand(`git add package.json yarn.lock`);
   execCommand(`git commit -m "${version(pkg.version)}"`);
   execCommand(`git tag "${version(pkg.version)}"`);
-  execCommand(`git push origin ${env.branch || 'master'} --follow-tags`);
+  execCommand(
+    `git push origin ${env.branch || getDefaultBranch()} --follow-tags`
+  );
   execCommand(`yarn npm publish`);
 };
 

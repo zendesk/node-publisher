@@ -72,7 +72,7 @@ npx node-publisher eject
 After ejecting, a `.release.yml` file will appear in the root directory of your package. You can override the default behaviour by modifying this file.
 
 ## Custom branch
-Using the `--branch` release param, it is possible to specify which branch should be checked out during the `prepare` [lifecycle](#lifecycle) step. When no `branch` is specified, the `master` branch will be checked out by default.
+Using the `--branch` release param, it is possible to specify which branch should be checked out during the `prepare` [lifecycle](#lifecycle) step. When no `branch` is specified, the default branch of the repository is detected automatically: first via `origin/HEAD`, then by checking whether a `main` or `master` branch exists locally. If nothing can be detected, `main` is used as a fallback.
 
 ## Multiple configuration files
 
@@ -95,7 +95,7 @@ Example:
 
 The default release process assumes the following:
 
-- The master branch is called `master`.
+- The default branch is `main` or `master` (any other branch can be specified with the `--branch` release param).
 - A `.nvmrc` file is present in the root of your package. In case it is missing, the release fails in its preparation phase.
 - The tool expects the Node version to match the one in `.nvmrc` during the release process. If the expectation is not met, the release fails in its preparation phase.
 - The tool expects the build generation script to be called `build`. Otherwise, the build step is skipped.
@@ -105,7 +105,7 @@ The default release process assumes the following:
 
 # Lifecycle
 
-1. `prepare`: The process that prepares the workspace for releasing a new version of your package. It might checkout to master, check whether the working tree is clean, check the current node version, etc. Between this step and `test`, a rollback point is created for your git repo.
+1. `prepare`: The process that prepares the workspace for releasing a new version of your package. It might checkout to the default branch, check whether the working tree is clean, check the current node version, etc. Between this step and `test`, a rollback point is created for your git repo.
 
 2. `test`: Runs the tests and/or linting. You might want to configure the tool to run the same command as your CI tool does.
 
