@@ -40,6 +40,8 @@ describe('buildReleaseEnvironment', () => {
     throw new Error();
   };
 
+  afterEach(() => execSync.mockClear());
+
   describe('when branch is passed', () => {
     beforeAll(() => mockTestRunner('test'));
 
@@ -51,10 +53,93 @@ describe('buildReleaseEnvironment', () => {
   });
 
   describe('when branch is not passed', () => {
+    afterEach(() => execSync.mockClear());
+
     it('contains the default branch', () => {
       const env = buildReleaseEnvironment({});
 
       expect(env.branch).toBe(DEFAULT_BRANCH);
+    });
+
+    describe('and the origin HEAD points to main', () => {
+      beforeAll(() => {
+        childProcess.__permitCommands(['git']);
+        childProcess.__setReturnValues({
+          'git symbolic-ref --short refs/remotes/origin/HEAD': Buffer.from(
+            'origin/main\n',
+            'utf8'
+          )
+        });
+      });
+
+      afterAll(() => {
+        childProcess.__permitCommands(['mycommand', 'mySecondCommand']);
+        childProcess.__setReturnValues({
+          'git symbolic-ref --short refs/remotes/origin/HEAD': undefined
+        });
+      });
+
+      it('contains the detected default branch', () => {
+        const env = buildReleaseEnvironment({});
+
+        expect(env.branch).toBe('main');
+      });
+    });
+
+    describe('and the origin HEAD is not set but master exists locally', () => {
+      beforeAll(() => {
+        childProcess.__permitCommands(['git']);
+        childProcess.__setReturnValues({
+          'git symbolic-ref --short refs/remotes/origin/HEAD': undefined,
+          'git branch': Buffer.from('  feature-x\n* master\n', 'utf8')
+        });
+      });
+
+      afterAll(() => {
+        childProcess.__permitCommands(['mycommand', 'mySecondCommand']);
+        childProcess.__setReturnValues({
+          'git symbolic-ref --short refs/remotes/origin/HEAD': undefined,
+          'git branch': undefined
+        });
+      });
+
+      it('falls back to the local master branch', () => {
+        const env = buildReleaseEnvironment({});
+
+        expect(env.branch).toBe('master');
+      });
+    });
+
+    describe('and the origin HEAD is not set but main exists locally', () => {
+      beforeAll(() => {
+        childProcess.__permitCommands(['git']);
+        childProcess.__setReturnValues({
+          'git symbolic-ref --short refs/remotes/origin/HEAD': undefined,
+          'git branch': Buffer.from('  main\n* feature-x\n', 'utf8')
+        });
+      });
+
+      afterAll(() => {
+        childProcess.__permitCommands(['mycommand', 'mySecondCommand']);
+        childProcess.__setReturnValues({
+          'git symbolic-ref --short refs/remotes/origin/HEAD': undefined,
+          'git branch': undefined
+        });
+      });
+
+      it('falls back to the local main branch', () => {
+        const env = buildReleaseEnvironment({});
+
+        expect(env.branch).toBe('main');
+      });
+    });
+
+    describe('and the origin HEAD cannot be detected', () => {
+      it('falls back to the default branch', () => {
+        const env = buildReleaseEnvironment({});
+
+        expect(env.branch).toBe(DEFAULT_BRANCH);
+      });
     });
   });
 

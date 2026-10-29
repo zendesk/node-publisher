@@ -59,7 +59,7 @@ describe('publish', () => {
     const options = {
       nextVersion: 'major',
       preid: 'alpha',
-      env: { main: 'master' },
+      env: { branch: 'master' },
       execCommand: jest.fn()
     };
 
